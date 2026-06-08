@@ -32,8 +32,12 @@ PLAN.md
 notes.md
 interview-prep.md
 working_with_ai.md
-tasks.md
+human-tasks.md
 test_walkthrough.md
+
+# Private starters for project 3 (red team), derived from PLAN.md / CLAUDE.md
+claude-red.md
+plan-red.md
 
 # Private writeup drafts + stray artifacts from the eval-harness project
 docs/rag-article-v3.md

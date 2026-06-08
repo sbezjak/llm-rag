@@ -122,6 +122,16 @@ collection in `tmp_path`.
 
 ## Working style with this user
 
+- **`human-tasks.md` is the channel for anything only the user can do.**
+  Whenever the next step needs the user (post the LinkedIn update, paste a
+  real URL, decide a squishy ground-truth call, run an interactive login),
+  append a checkbox item to `human-tasks.md` instead of only mentioning it
+  in chat - chat scrolls, the file persists. Read this file when picking up
+  work so nothing waits unseen. The name is deliberately `human-tasks`, not
+  `tasks`, so it never gets confused with a generic task tool. (It exists
+  because that confusion already happened once - "write in tasks" was read
+  as the session task tool and the actual `tasks.md` in the repo was
+  skipped.)
 - **Prepare drafts/templates for any task the user has to do by hand.**
   When the next step is something only the user can do (write a
   retrieval-set row, decide which chunk is the "expected" one, grade an
