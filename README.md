@@ -1,12 +1,14 @@
 # llm-rag
 
-Full writeup and every finding: [walkthrough](docs/walkthrough.md)
+New here? The [walkthrough](docs/walkthrough.md) is the guided tour - why
+the project exists, every finding with evidence. This README is the
+reference.
 
 Live report: [test report](https://sbezjak.github.io/llm-rag/reports/report.html)
 
 Built as project 2 of 5 exploring AI/LLM testing.
 Part 1: [llm-eval-harness](https://github.com/sbezjak/llm-eval-harness)
-(scorer design, calibration, bias). A writeup is in progress.
+(scorer design, calibration, bias).
 
 Most RAG failures look like generation bugs but are actually retrieval bugs -
 the model produced a wrong answer because the wrong chunk was fetched, not
@@ -47,9 +49,10 @@ HTML test report is auto-generated at `reports/report.html` on every
 
 ## Findings
 
-Eleven findings encoded in this repo. Use the right column as entry
-points into the codebase. Full evidence for each is in
-[`docs/walkthrough.md`](docs/walkthrough.md).
+Eleven findings from building and testing this system. The right column
+is the code entry point where a finding lives in a test; a few live only
+in the walkthrough, which carries the full evidence for each
+([`docs/walkthrough.md`](docs/walkthrough.md)).
 
 | # | Finding | Where |
 |---|---|---|
