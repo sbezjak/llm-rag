@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.0.3, pluggy-1.6.0
+rootdir: /Users/sara/StudioProjects/llm-rag
+configfile: pyproject.toml
+testpaths: tests
+plugins: metadata-3.1.1, html-4.2.0, asyncio-1.3.0, respx-0.23.1, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 232 items
+
+tests/citation/test_citation.py .x....x...                               [  4%]
+tests/generation/test_generation_quality.py .........x                   [  8%]
+tests/generation/test_generator.py ......                                [ 11%]
+tests/generation/test_scorers.py ......                                  [ 13%]
+tests/hallucination/test_hallucination.py ..x....                        [ 16%]
+tests/observability/test_drift.py ............                           [ 21%]
+tests/observability/test_tracing.py .........                            [ 25%]
+tests/refusal/test_refusal.py .x....                                     [ 28%]
+tests/retrieval/test_bm25.py xx..........xx..................            [ 42%]
+tests/retrieval/test_hybrid.py ............xx........................... [ 59%]
+.......................                                                  [ 69%]
+tests/retrieval/test_reranker.py .........x.........x..xx.xxxx.xxx..     [ 84%]
+tests/retrieval/test_vector.py ............xx........x...x.....          [ 98%]
+tests/test_smoke_chroma.py .                                             [ 99%]
+tests/test_smoke_mocked.py .                                             [ 99%]
+tests/test_smoke_ollama.py .                                             [100%]
+
+- Generated html report: file:///Users/sara/StudioProjects/llm-rag/reports/report.html -
+================= 206 passed, 26 xfailed in 1403.18s (0:23:23) =================

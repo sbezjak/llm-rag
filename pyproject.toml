@@ -1,0 +1,69 @@
+[project]
+name = "llm_rag"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "pyyaml>=6.0",
+    "chromadb>=0.5",
+    "sentence-transformers>=3.0",
+    "rank-bm25>=0.2.2",
+    "rouge-score>=0.1.2",
+]
+
+[project.optional-dependencies]
+# Langfuse is optional: the tracing layer degrades to a local JSON
+# tracer when the SDK is absent or no keys are set, so the pipeline and
+# the day-1 baseline never depend on it. Install with
+# `uv sync --extra observability` to trace to a real Langfuse server.
+observability = ["langfuse>=2"]
+# Ragas is optional and only used by the S8 scorer-comparison script
+# (llm_rag.scripts.run_ragas_comparison). It drags in langchain +
+# datasets, so it stays out of the default install; the core pipeline
+# and every test run never import it. Install with
+# `uv sync --extra ragas` to run the comparison.
+ragas = [
+    "ragas>=0.2,<0.3",
+    # Ragas 0.2.x was built against the langchain 0.3 era; the 1.x stack
+    # removed import paths it still references (e.g. the vertexai chat
+    # shim), so pin the langchain side down to keep the resolver there.
+    "langchain-ollama>=0.2,<0.3",
+    "langchain-community>=0.3,<0.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "pytest-html>=4",
+    "respx>=0.21",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["llm_rag"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "--html=reports/report.html --self-contained-html"
+log_cli = false
+log_level = "INFO"
+log_format = "%(asctime)s %(levelname)-8s %(name)s: %(message)s"
+log_date_format = "%H:%M:%S"
+filterwarnings = [
+    "ignore::DeprecationWarning:opentelemetry.*",
+]
+markers = [
+    "mocked: fast unit tests, Ollama HTTP mocked with respx",
+    "ollama: requires live Ollama at localhost:11434",
+    "chroma: requires a built Chroma index (or per-test tmp_path index)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

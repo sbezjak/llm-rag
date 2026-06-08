@@ -1,0 +1,100 @@
+# Out-of-corpus set: questions whose answer is NOT in the 12 pytest doc
+# pages we indexed. Used by tests/refusal to check the system says "I
+# don't know" instead of inventing an answer from whatever chunk
+# retrieval happened to surface.
+#
+# Why this set matters. The refusal contract is the honest-failure mode
+# of a RAG system: when the corpus does not contain the answer, the
+# right behaviour is to decline, not to dress up an irrelevant chunk as
+# an answer. The hard cases are not "what's the capital of France" (the
+# model refuses those easily); they are ADJACENT-BUT-ABSENT questions,
+# real pytest topics that are NOT in our 12 pages, where retrieval still
+# returns a plausible-looking chunk and the model is tempted to answer
+# from it. Those are where refusal actually gets tested.
+#
+# The 12 pages we DID index (anything outside these is fair game as
+# out-of-corpus): getting-started, assert, cache, capture-stdout-stderr,
+# doctest, fixtures, mark, monkeypatch, parametrize, skipping, tmp_path,
+# usage.
+#
+# Categories (set `category` so we can slice refusal rates):
+#   - off_topic        nothing to do with pytest. Easy refusal, control
+#                      group. Expect ~100% refusal; if the model answers
+#                      one of these, that is a real finding.
+#   - adjacent_absent  a genuine pytest topic that is NOT in our 12
+#                      pages (e.g. parallelisation, plugin authoring).
+#                      The hard cases: retrieval returns a near-miss
+#                      chunk. This is where we learn whether refusal
+#                      holds under pressure.
+#
+# What is pre-filled (candidates, edit freely):
+#   - id, query, category, why_absent  drafted for you.
+#
+# What YOU fill in / confirm (the squishy part):
+#   - why_absent   confirm the topic really is NOT covered by any chunk.
+#                  Spot-check data/chunk_manifest.md. If a query turns
+#                  out to be answerable from the corpus, it is not an
+#                  out-of-corpus question, move it or drop it.
+#   - notes        optional. Anything you expect to be tricky (e.g.
+#                  "retrieval will surface the mark chunk for this and
+#                  it looks close enough to tempt an answer").
+#
+# A faithful refusal is the generator emitting (close to) the exact
+# string the prompt mandates: "I don't know based on the provided
+# context." The refusal test is deliberately lenient about exact wording
+# (see tests/refusal); what it will NOT accept is a substantive answer
+# with citations.
+
+entries:
+  - id: ooc-001
+    query: how do I run my pytest tests in parallel across multiple CPUs
+    category: adjacent_absent
+    why_absent: >-
+      Verified absent. Parallelism is the pytest-xdist plugin (-n auto),
+      not in any of the 12 pages. The only "concurrent" mention is
+      tmp_path noting its temp dir is unique per concurrent invocation,
+      which is a near-miss: it does not teach how to run tests in
+      parallel.
+    notes: "near-miss chunk: the tmp_path concurrent-invocations section"
+
+  - id: ooc-002
+    query: how do I write my own pytest plugin and register a hook
+    category: adjacent_absent
+    why_absent: >-
+      Verified absent. The `usage` page covers LOADING plugins (-p,
+      early-loading, disabling) but never AUTHORING one or registering
+      hooks; no hookspec content anywhere. Confirmed empirically: the
+      model fabricated a whole answer and cited `how-to__plugin::
+      registering-a-plugin::0`, a chunk id that does not exist.
+    notes: "the live refusal run failed on this row (see notes.md S5): model fabricated answer + source"
+
+  - id: ooc-003
+    query: how do I generate a JUnit XML report of my test results
+    category: adjacent_absent
+    why_absent: >-
+      Verified absent. The only occurrence is one passing mention in
+      capture-stdout-stderr ("captured for plugin use, such as
+      junitxml"); no chunk explains the --junitxml flag or how to
+      produce the report. The answer is not in the corpus.
+    notes: "near-miss: a passing mention of junitxml exists but not the how-to"
+
+  - id: ooc-004
+    query: what is the difference between pytest and the unittest module
+    category: adjacent_absent
+    why_absent: >-
+      Verified absent. `unittest` appears only as an analogy
+      (assertRaisesRegex) and a note that pytest supports unittest.TestCase
+      fixtures; no chunk compares the two frameworks.
+    notes: ""
+
+  - id: ooc-005
+    query: what is the boiling point of water at sea level
+    category: off_topic
+    why_absent: not about pytest at all, control case
+    notes: "control: model should refuse trivially"
+
+  - id: ooc-006
+    query: how do I deploy a FastAPI app to production with gunicorn
+    category: off_topic
+    why_absent: not about pytest, control case
+    notes: "control: off-topic software question, tempting because it is technical"

@@ -1,0 +1,181 @@
+{
+  "by_category": {
+    "identifier": {
+      "bm25": {
+        "recall@1": 1.0,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "hybrid": {
+        "recall@1": 0.75,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "rerank": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "vector": {
+        "recall@1": 0.75,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      }
+    },
+    "mixed": {
+      "bm25": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 0.5
+      },
+      "hybrid": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "rerank": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "vector": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      }
+    },
+    "paraphrase": {
+      "bm25": {
+        "recall@1": 0.375,
+        "recall@10": 0.875,
+        "recall@5": 0.875
+      },
+      "hybrid": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "rerank": {
+        "recall@1": 0.375,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "vector": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 0.875
+      }
+    },
+    "tough": {
+      "bm25": {
+        "recall@1": 0.5,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "hybrid": {
+        "recall@1": 1.0,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "rerank": {
+        "recall@1": 1.0,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      },
+      "vector": {
+        "recall@1": 1.0,
+        "recall@10": 1.0,
+        "recall@5": 1.0
+      }
+    }
+  },
+  "k_values": [
+    1,
+    5,
+    10
+  ],
+  "misses_by_retriever": {
+    "bm25": {
+      "1": [
+        "ret-001",
+        "ret-003",
+        "ret-004",
+        "ret-005",
+        "ret-008",
+        "ret-012",
+        "ret-tough-001"
+      ],
+      "5": [
+        "ret-001",
+        "ret-004"
+      ],
+      "10": [
+        "ret-001"
+      ]
+    },
+    "hybrid": {
+      "1": [
+        "ret-001",
+        "ret-004",
+        "ret-005",
+        "ret-008",
+        "ret-012",
+        "ret-014"
+      ],
+      "5": [],
+      "10": []
+    },
+    "rerank": {
+      "1": [
+        "ret-001",
+        "ret-004",
+        "ret-005",
+        "ret-008",
+        "ret-010",
+        "ret-012",
+        "ret-013",
+        "ret-014"
+      ],
+      "5": [],
+      "10": []
+    },
+    "vector": {
+      "1": [
+        "ret-001",
+        "ret-004",
+        "ret-005",
+        "ret-006",
+        "ret-012",
+        "ret-014"
+      ],
+      "5": [
+        "ret-012"
+      ],
+      "10": []
+    }
+  },
+  "n_entries": 16,
+  "overall": {
+    "bm25": {
+      "recall@1": 0.5625,
+      "recall@10": 0.9375,
+      "recall@5": 0.875
+    },
+    "hybrid": {
+      "recall@1": 0.625,
+      "recall@10": 1.0,
+      "recall@5": 1.0
+    },
+    "rerank": {
+      "recall@1": 0.5,
+      "recall@10": 1.0,
+      "recall@5": 1.0
+    },
+    "vector": {
+      "recall@1": 0.625,
+      "recall@10": 1.0,
+      "recall@5": 0.9375
+    }
+  },
+  "rerank_candidate_k": 25
+}

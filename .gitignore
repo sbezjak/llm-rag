@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtualenv / uv
+.venv/
+.python-version
+
+# Build artifacts
+dist/
+build/
+
+# IDE / editor / tooling
+.idea/
+.vscode/
+*.swp
+.claude/
+
+# macOS
+.DS_Store
+
+# Vector store (rebuilt with scripts.build_index)
+.chroma/
+
+# Private working notes (not for the public-facing repo)
+PLAN.md
+notes.md
+interview-prep.md
+working_with_ai.md
+tasks.md
+test_walkthrough.md
+
+# Private writeup drafts + stray artifacts from the eval-harness project
+docs/rag-article-v3.md
+docs/eval-article.md
+docs/walkthrough-eval.md
+
+# Reports: keep the HTML report (GitHub Pages centerpiece), the JSON
+# baselines/drift/ragas artifacts, and the run logs. Everything in reports/
+# is a captured result worth publishing, so nothing here is ignored.

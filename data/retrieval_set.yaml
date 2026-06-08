@@ -1,0 +1,212 @@
+# Retrieval-set: (query, expected_chunk_id) pairs.
+#
+# How retrieval tests use this file:
+#   For each entry, we embed `query`, retrieve top-k chunks from the
+#   index, and assert that `expected_chunk_id` (or one of
+#   `acceptable_chunk_ids`) appears in the top-k. Failure means the
+#   retriever didn't surface the chunk we believed contained the
+#   answer.
+#
+# How to write a good query:
+#   - Phrase it the way a user would actually type it. Mix of natural
+#     language ("how do I skip a test") and identifier-flavored
+#     queries ("pytest.fixture scope=module"). The hybrid retriever
+#     should handle both.
+#   - Keep it short. Real queries are 5 to 15 words.
+#   - Pick `expected_chunk_id` from data/chunk_manifest.md. The
+#     preview text helps you confirm the chunk actually contains the
+#     answer.
+#   - If two or more chunks would plausibly be the "right" answer,
+#     list them under `acceptable_chunk_ids` instead of picking one.
+#     This avoids false-negative test failures.
+#
+# Categories (set the `category` field so we can slice results):
+#   - paraphrase: natural-language query, no identifiers. Tests vector
+#     strength.
+#   - identifier: query contains exact pytest identifiers
+#     (decorators, function names, flags). Tests BM25 strength.
+#   - mixed: both natural language and identifiers. Tests hybrid.
+#   - tough: query is intentionally ambiguous, indirect, or uses
+#     vocabulary not present in the chunk. Tests semantic recall.
+
+entries:
+  - id: ret-001
+    query: how do I write my first pytest test
+    acceptable_chunk_ids:
+      - getting-started::create-your-first-test::0
+      - getting-started::create-your-first-test::1
+    category: paraphrase
+    notes: |
+      Plain natural-language query, no identifiers. The chunk
+      literally walks through `test_sample.py`. Vector should crush
+      this. If it doesn't, the embedding model is broken.
+      Both ::0 (intro) and ::1 (continuation) are the same section,
+      split only by the 1200-char chunker, so either is a correct hit.
+
+  - id: ret-002
+    query: pytest.fixture scope module
+    acceptable_chunk_ids:
+      - how-to__fixtures::fixture-scopes::0
+      - how-to__fixtures::scope-sharing-fixtures-across-classes-modules-packages-or-session::0
+    category: identifier
+    notes: |
+      Identifier-heavy query. Pure vector tends to miss this because
+      `scope="module"` doesn't paraphrase. BM25 should catch it.
+      The `modularity-using-fixtures-from-a-fixture-function::2` chunk
+      mentions scope=module in passing but is really about fixture
+      modularity, so we don't accept it.
+      Widened in S4: the `scope-sharing-fixtures-...::0` chunk also
+      documents scope levels (session/module/function) and is a valid
+      answer; the reranker surfaces it as top-1.
+
+  - id: ret-003
+    query: how do I skip a test on Windows
+    acceptable_chunk_ids:
+      - how-to__skipping::skip-all-test-functions-of-a-class-or-module::0
+      - how-to__skipping::skipping-test-functions::0
+    category: paraphrase
+    notes: |
+      The chunk likely mentions `sys.platform` and
+      `@pytest.mark.skipif` but may not literally say "Windows".
+      Tests whether the embedding model bridges that gap.
+      Widened in S4: `skipping-test-functions::0` documents the
+      per-test skip decorator pattern that the query ("skip a test",
+      singular) most directly asks about; arguably a better top-1 than
+      the module-level chunk.
+
+  - id: ret-004
+    query: parametrize multiple test inputs
+    acceptable_chunk_ids:
+      - how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0
+      - how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::1
+    category: mixed
+    notes: |
+      Has the identifier `parametrize` and natural-language framing.
+      Either retriever should hit it; useful as a baseline.
+      Ground-truth corrected: originally pointed at the page-level
+      `how-to-parametrize-fixtures-and-test-functions::0` chunk, but
+      that's an index/overview without a worked example. The actual
+      `@pytest.mark.parametrize` walkthrough lives in the subsection
+      chunks listed above.
+
+  - id: ret-005
+    query: temporary directory for test files
+    acceptable_chunk_ids:
+      - how-to__tmp_path::the-tmp-path-factory-fixture::0
+      - how-to__tmp_path::the-tmp-path-fixture::0
+      - how-to__tmp_path::the-tmp-path-fixture::1
+    category: paraphrase
+    notes: |
+      Example of `acceptable_chunk_ids` usage. Either modern tmp_path
+      chunk is fine. We deliberately exclude the legacy
+      `tmpdir-and-tmpdir-factory-fixtures::0` chunk, surfacing the
+      deprecated API for a modern query is a real retrieval-quality
+      issue and we want the test to catch it.
+      `the-tmp-path-fixture::1` added: same section as `::0`, split by
+      the chunker, so it's equally a correct hit.
+
+  - id: ret-006
+    query: how to group multiple tests
+    expected_chunk_id: getting-started::group-multiple-tests-in-a-class::0
+    category: paraphrase
+    notes: ""
+
+  - id: ret-007
+    query: pytest.warns
+    expected_chunk_id: how-to__assert::assertions-about-expected-warnings::0
+    category: identifier
+    notes: ""
+
+  - id: ret-008
+    query: can I create a custom mark
+    expected_chunk_id: how-to__mark::registering-marks::0
+    category: paraphrase
+    notes: ""
+
+  - id: ret-009
+    query: how to modify environment variable for a test
+    acceptable_chunk_ids:
+      - how-to__monkeypatch::monkeypatching-environment-variables::0
+      - how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2
+    category: paraphrase
+    notes: |
+      Widened: the dedicated `monkeypatching-environment-variables::0`
+      chunk is the more direct answer (vector returns it at rank 1).
+      The umbrella `how-to-monkeypatch-mock-modules-and-environments::2`
+      chunk also covers env vars as item 3 in its list, so either is a
+      correct hit. Original entry pointed only at the umbrella, which
+      made every retriever miss even though they all found the better
+      dedicated chunk.
+
+  - id: ret-010
+    query: how to disable stdout capture
+    expected_chunk_id: how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0
+    category: paraphrase
+    notes: ""
+
+  - id: ret-011
+    query: how to run doctests
+    acceptable_chunk_ids: 
+    - how-to__doctest::how-to-run-doctests::0
+    - how-to__doctest::how-to-run-doctests::1
+    category: mixed
+    notes: ""
+
+  - id: ret-012
+    query: how to run tests with custom marker
+    acceptable_chunk_ids:
+      - how-to__usage::specifying-which-tests-to-run::0
+      - how-to__usage::specifying-which-tests-to-run::1
+    category: paraphrase
+    notes: |
+      Known failing under vector retrieval. The query is intent-ambiguous:
+      "run tests with custom marker" can mean "select tests by marker
+      (pytest -m)" (the intended reading, covered by the acceptable
+      chunks) or "attach markers to test functions" (what vector
+      returns: how-to__mark chunks). Re-check after hybrid + reranker
+      to see whether lexical signal or cross-encoder rescoring fixes it.
+
+  - id: ret-013
+    query: --cache-clear
+    expected_chunk_id: how-to__cache::clearing-cache-content::0
+    category: identifier
+    notes: ""
+
+  - id: ret-014
+    query: pytest -m select tests by marker
+    acceptable_chunk_ids:
+      - how-to__usage::specifying-which-tests-to-run::0
+      - how-to__usage::specifying-which-tests-to-run::1
+    category: identifier
+    notes: |
+      Unambiguous companion to ret-012. Same intended chunks, but the
+      query is rephrased to use the literal `-m` flag and the verb
+      "select", so there is no intent ambiguity with "attach marker to
+      test function". Pair with ret-012 to show that the reranker can
+      answer the clear phrasing while the ambiguous phrasing remains
+      a documented xfail.
+
+  - id: ret-tough-001
+    query: how can I rerun only the tests that failed last time
+    acceptable_chunk_ids:
+    - how-to__cache::usage::0
+    - how-to__cache::rerunning-only-failures-or-failures-first::0
+    category: tough
+    notes: |
+      Goal: query and chunk share concept but no words. The query
+      says "rerun failed tests"; the chunks talk about `--lf` /
+      `--last-failed`. Vector should bridge the gap; BM25 alone will
+      miss it because no shared terms. If neither retriever surfaces
+      either chunk, that's a finding.
+      (The original "print fewer details in console output" query was
+      moved out: no chunk in the corpus actually documents `-q` /
+      `--tb=short` verbosity, the only matches were chunks that
+      happened to contain `pytest -q` inside sample command output.)
+
+  - id: ret-tough-002
+    query: how to invoke python interpreter to run pytest
+    expected_chunk_id: how-to__usage::calling-pytest-through-python-m-pytest::0
+    category: tough
+    notes: |
+      Goal: identifier match that BM25 should catch even if vector
+      misses. If neither retriever catches it, the hybrid is broken.

@@ -1,0 +1,101 @@
+{
+  "old_captured": "2026-05-27",
+  "new_captured": "2026-05-27",
+  "model": "llama3.2",
+  "generation_latency_s": {
+    "p50": {
+      "old": 4.1904,
+      "new": 4.5673,
+      "delta": 0.3769,
+      "pct_change": 0.0899,
+      "flagged": false
+    },
+    "p95": {
+      "old": 10.8528,
+      "new": 9.5308,
+      "delta": -1.322,
+      "pct_change": -0.1218,
+      "flagged": false
+    },
+    "mean": {
+      "old": 5.2139,
+      "new": 5.2752,
+      "delta": 0.0613,
+      "pct_change": 0.0118,
+      "flagged": false
+    }
+  },
+  "retrieval_latency_s": {
+    "p50": {
+      "old": 1.6745,
+      "new": 2.0506,
+      "delta": 0.3761,
+      "pct_change": 0.2246,
+      "flagged": false
+    },
+    "p95": {
+      "old": 2.6327,
+      "new": 5.005,
+      "delta": 2.3723,
+      "pct_change": 0.9011,
+      "flagged": true
+    },
+    "mean": {
+      "old": 1.8355,
+      "new": 2.3626,
+      "delta": 0.5271,
+      "pct_change": 0.2872,
+      "flagged": false
+    }
+  },
+  "tokens_per_query": {
+    "mean_total": {
+      "old": 460.8,
+      "new": 460.8,
+      "delta": 0.0,
+      "pct_change": 0.0,
+      "flagged": false
+    },
+    "mean_prompt": {
+      "old": 386.2,
+      "new": 386.2,
+      "delta": 0.0,
+      "pct_change": 0.0,
+      "flagged": false
+    },
+    "mean_completion": {
+      "old": 74.6,
+      "new": 74.6,
+      "delta": 0.0,
+      "pct_change": 0.0,
+      "flagged": false
+    }
+  },
+  "scorer_means": {
+    "semantic": {
+      "old": 0.8324,
+      "new": 0.8324,
+      "delta": 0.0,
+      "flagged": false
+    },
+    "rouge": {
+      "old": 0.3198,
+      "new": 0.3198,
+      "delta": 0.0,
+      "flagged": false
+    },
+    "judge": {
+      "old": 0.87,
+      "new": 0.87,
+      "delta": 0.0,
+      "flagged": false
+    }
+  },
+  "per_query": {
+    "newly_failing": [],
+    "regressed": [],
+    "added_queries": [],
+    "dropped_queries": []
+  },
+  "has_regression": true
+}

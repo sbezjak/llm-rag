@@ -1,0 +1,312 @@
+[
+  {
+    "name": "retrieval",
+    "duration_s": 1.8273563330294564,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I write and run my first pytest test?",
+      "returned_ids": [
+        "how-to__usage::specifying-which-tests-to-run::1",
+        "how-to__usage::specifying-which-tests-to-run::0",
+        "how-to__parametrize::basic-pytest-generate-tests-example::0",
+        "getting-started::run-multiple-tests::0",
+        "how-to__usage::how-to-invoke-pytest::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 1.8707898339489475,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I skip a single test function?",
+      "returned_ids": [
+        "how-to__skipping::skipping-test-functions::0",
+        "how-to__skipping::skip-all-test-functions-of-a-class-or-module::0",
+        "how-to__doctest::skipping-tests::0",
+        "how-to__skipping::skipif::0",
+        "how-to__skipping::summary::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 1.8062464999966323,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I run the same test against multiple inputs?",
+      "returned_ids": [
+        "how-to__fixtures::fixtures-can-be-requested-more-than-once-per-test-return-values-are-cached::0",
+        "how-to__mark::how-to-mark-test-functions-with-attributes::0",
+        "getting-started::run-multiple-tests::0",
+        "how-to__usage::calling-pytest-from-python-code::1",
+        "getting-started::group-multiple-tests-in-a-class::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 2.05058920790907,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I get a temporary directory unique to a test?",
+      "returned_ids": [
+        "getting-started::request-a-unique-temporary-directory-for-functional-tests::0",
+        "how-to__tmp_path::the-tmp-path-fixture::0",
+        "getting-started::request-a-unique-temporary-directory-for-functional-tests::1",
+        "how-to__tmp_path::the-tmp-path-fixture::1",
+        "how-to__tmp_path::the-tmp-path-factory-fixture::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 2.072994334041141,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I assert that some code raises an exception?",
+      "returned_ids": [
+        "getting-started::assert-that-a-certain-exception-is-raised::0",
+        "how-to__assert::assertions-about-expected-exceptions::0",
+        "how-to__assert::alternate-pytest-raises-form-legacy::0",
+        "how-to__fixtures::safe-fixture-structure::2",
+        "how-to__assert::matching-exception-messages::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 2.3527586249401793,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I clear pytest's cache?",
+      "returned_ids": [
+        "how-to__cache::clearing-cache-content::0",
+        "how-to__cache::usage::0",
+        "how-to__cache::inspecting-cache-content::0",
+        "how-to__assert::assertion-rewriting-caches-files-on-disk::0",
+        "how-to__cache::the-new-config-cache-object::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 2.1623584589688107,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I register a custom marker so pytest stops warning about it?",
+      "returned_ids": [
+        "how-to__mark::registering-marks::0",
+        "how-to__mark::raising-errors-on-unknown-marks::0",
+        "how-to__fixtures::using-fixtures-from-other-projects::0",
+        "how-to__mark::how-to-mark-test-functions-with-attributes::0",
+        "how-to__fixtures::using-markers-to-pass-data-to-fixtures::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 2.63297145802062,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I disable output capturing in pytest?",
+      "returned_ids": [
+        "how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0",
+        "how-to__capture-stdout-stderr::accessing-captured-output-from-a-test-function::1",
+        "how-to__capture-stdout-stderr::accessing-captured-output-from-a-test-function::0",
+        "how-to__capture-stdout-stderr::using-print-statements-for-debugging::0",
+        "how-to__capture-stdout-stderr::how-to-capture-stdout-stderr-output::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 5.004963041981682,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "What fixture scopes does pytest support?",
+      "returned_ids": [
+        "how-to__fixtures::fixture-scopes::0",
+        "how-to__fixtures::using-fixtures-from-other-projects::0",
+        "how-to__fixtures::scope-sharing-fixtures-across-classes-modules-packages-or-session::3",
+        "how-to__fixtures::teardown-cleanup-aka-fixture-finalization::0",
+        "how-to__fixtures::scope-sharing-fixtures-across-classes-modules-packages-or-session::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "retrieval",
+    "duration_s": 1.8451188750332221,
+    "error": null,
+    "attrs": {
+      "kind": "retrieval",
+      "query": "How do I set an environment variable for a single test?",
+      "returned_ids": [
+        "how-to__monkeypatch::monkeypatching-environment-variables::0",
+        "how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::1",
+        "how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::0",
+        "how-to__monkeypatch::monkeypatching-environment-variables::1",
+        "how-to__tmp_path::temporary-directory-location-and-retention::0"
+      ],
+      "k": 5
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 9.530834791017696,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I write and run my first pytest test?",
+      "prompt_chars": 1734,
+      "answer_chars": 328,
+      "prompt_tokens": 405,
+      "completion_tokens": 72,
+      "total_duration_s": 9.178132042
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 4.764474375057034,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I skip a single test function?",
+      "prompt_chars": 1578,
+      "answer_chars": 411,
+      "prompt_tokens": 361,
+      "completion_tokens": 84,
+      "total_duration_s": 4.729361
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 7.764586415956728,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I run the same test against multiple inputs?",
+      "prompt_chars": 1920,
+      "answer_chars": 590,
+      "prompt_tokens": 448,
+      "completion_tokens": 148,
+      "total_duration_s": 7.717369333
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 3.450575291062705,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I get a temporary directory unique to a test?",
+      "prompt_chars": 1855,
+      "answer_chars": 150,
+      "prompt_tokens": 443,
+      "completion_tokens": 39,
+      "total_duration_s": 3.414386875
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 6.3412008750019595,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I assert that some code raises an exception?",
+      "prompt_chars": 1845,
+      "answer_chars": 555,
+      "prompt_tokens": 418,
+      "completion_tokens": 111,
+      "total_duration_s": 6.262021959
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 2.3320950840134174,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I clear pytest's cache?",
+      "prompt_chars": 948,
+      "answer_chars": 127,
+      "prompt_tokens": 234,
+      "completion_tokens": 34,
+      "total_duration_s": 2.302118583
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 6.746805541915819,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I register a custom marker so pytest stops warning about it?",
+      "prompt_chars": 1590,
+      "answer_chars": 588,
+      "prompt_tokens": 375,
+      "completion_tokens": 122,
+      "total_duration_s": 6.714868625
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 4.567263292032294,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I disable output capturing in pytest?",
+      "prompt_chars": 1898,
+      "answer_chars": 225,
+      "prompt_tokens": 456,
+      "completion_tokens": 59,
+      "total_duration_s": 4.536848791
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 3.1834387499839067,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "What fixture scopes does pytest support?",
+      "prompt_chars": 1430,
+      "answer_chars": 131,
+      "prompt_tokens": 339,
+      "completion_tokens": 36,
+      "total_duration_s": 3.108423416
+    }
+  },
+  {
+    "name": "generation",
+    "duration_s": 4.070564083056524,
+    "error": null,
+    "attrs": {
+      "kind": "generation",
+      "query": "How do I set an environment variable for a single test?",
+      "prompt_chars": 1597,
+      "answer_chars": 159,
+      "prompt_tokens": 383,
+      "completion_tokens": 41,
+      "total_duration_s": 3.935853292
+    }
+  }
+]

@@ -1,0 +1,214 @@
+{
+  "captured": "2026-05-27",
+  "model": "llama3.2",
+  "ragas_judge_model": "llama3.1:8b",
+  "embed_model": "all-MiniLM-L6-v2",
+  "n_queries": 10,
+  "query_set": "generation_set",
+  "context_mode": "known_good (blessed), not live retrieval",
+  "metric_map": {
+    "answer_similarity": "semantic",
+    "answer_correctness": "judge",
+    "faithfulness": null,
+    "context_precision": null
+  },
+  "our_scorer_means": {
+    "semantic": 0.8324,
+    "rouge": 0.3198,
+    "judge": 0.87
+  },
+  "ragas_metric_means": {
+    "semantic_similarity": 0.8324,
+    "answer_correctness": 0.5062,
+    "faithfulness": 0.8929,
+    "context_precision": 1.0
+  },
+  "ragas_parse_failures": {
+    "semantic_similarity": 0,
+    "answer_correctness": 0,
+    "faithfulness": 0,
+    "context_precision": 0
+  },
+  "per_query": [
+    {
+      "id": "gen-001",
+      "query": "How do I write and run my first pytest test?",
+      "context": "# Create your first test\n\nCreate a new file called test_sample.py, containing a function, and a test:\n\n    # content of test_sample.py\n    def func(x):\n        return x + 1\n\n    def test_answer():\n        assert func(3) == 5\n\nThe test\n\n    $ pytest\n    =========================== test session starts ============================\n    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\n    rootdir: /home/sweet/project\n    collected 1 item\n\n    test_sample.py F                                                     [100%]\n\n    ================================= FAILURES =================================\n    _______________________________ test_answer ________________________________\n\n        def test_answer():\n    >       assert func(3) == 5\n    E       assert 4 == 5\n    E        +  where 4 = func(3)\n\n    test_sample.py:6: AssertionError\n    ========================= short test summary info ==========================\n    FAILED test_sample.py::test_answer - assert 4 == 5\n    ============================ 1 failed in 0.12s =============================",
+      "answer": "To write and run your first pytest test, you need to create a new file called `test_sample.py` with the function and test as shown in the example. Then, navigate to the directory containing this file and run the command `$ pytest`. This will execute the test and display the result.\n\n[getting-started::create-your-first-test::0]",
+      "expected": "Create a file such as test_sample.py with a function and a test that uses a plain assert statement, then run pytest from the command line to collect and run it.",
+      "ours": {
+        "semantic": 0.8395,
+        "rouge": 0.3333,
+        "judge": 0.85
+      },
+      "ragas": {
+        "semantic_similarity": 0.8395,
+        "answer_correctness": 0.6599,
+        "faithfulness": 0.75,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-002",
+      "query": "How do I skip a single test function?",
+      "context": "# Skipping test functions\n\nThe simplest way to skip a test function is to mark it with the skip decorator\nwhich may be passed an optional reason:\n\n\n\n    @pytest.mark.skip(reason=\"no way of currently testing this\")\n    def test_the_unknown(): ...\n\n\nAlternatively, it is also possible to skip imperatively during test execution or setup\nby calling the pytest.skip(reason) function:\n\n\n\n    def test_function():\n        if not valid_config():\n            pytest.skip(\"unsupported configuration\")\n\nThe imperative method is useful when it is not possible to evaluate the skip condition\nduring import time.\n\nIt is also possible to skip the whole module using\npytest.skip(reason, allow_module_level=True) at the module level:\n\n\n\n    import sys\n\n    import pytest\n\n    if not sys.platform.startswith(\"win\"):\n        pytest.skip(\"skipping windows-only tests\", allow_module_level=True)\n\n\n**Reference**: pytest.mark.skip ref",
+      "answer": "You can skip a single test function by using the `@pytest.mark.skip` decorator, which may be passed an optional reason.\n\n    @pytest.mark.skip(reason=\"no way of currently testing this\")\n    def test_the_unknown(): ...\n\nAlternatively, you can use the `pytest.skip` function without any arguments to skip the entire test function.\n\n    def test_function():\n        if not valid_config():\n            pytest.skip()",
+      "expected": "Mark the test function with the @pytest.mark.skip decorator, optionally passing a reason. You can also skip imperatively during the test by calling pytest.skip(reason), which is useful when the skip condition can only be evaluated at runtime rather than at import time.",
+      "ours": {
+        "semantic": 0.8783,
+        "rouge": 0.3019,
+        "judge": 0.85
+      },
+      "ragas": {
+        "semantic_similarity": 0.8783,
+        "answer_correctness": 0.5196,
+        "faithfulness": 0.4286,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-003",
+      "query": "How do I run the same test against multiple inputs?",
+      "context": "# @pytest.mark.parametrize: parametrizing test functions\n\n\n\nThe builtin pytest.mark.parametrize ref decorator enables\nparametrization of arguments for a test function.  Here is a typical example\nof a test function that implements checking that a certain input leads\nto an expected output:\n\n    # content of test_expectation.py\n    import pytest\n\n    @pytest.mark.parametrize(\"test_input,expected\", [(\"3+5\", 8), (\"2+4\", 6), (\"6*9\", 42)])\n    def test_eval(test_input, expected):\n        assert eval(test_input) == expected\n\nHere, the @parametrize decorator defines three different (test_input,expected)\ntuples so that the test_eval function will run three times using\nthem in turn:\n\n    $ pytest\n    =========================== test session starts ============================\n    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\n    rootdir: /home/sweet/project\n    collected 3 items\n\n    test_expectation.py ..F                                              [100%]\n\n    ================================= FAILURES =================================\n    ____________________________ test_eval[6*9-42] _____________________________\n\n    test_input = '6*9', expected = 42",
+      "answer": "To run the same test against multiple inputs, you can use the `@pytest.mark.parametrize` decorator with a list of tuples as its argument. Here's an example:\n\n    # content of test_expectation.py\n    import pytest\n\n    @pytest.mark.parametrize(\"test_input,expected\", [\n        (\"3+5\", 8),\n        (\"2+4\", 6),\n        (\"6*9\", 42)\n    ])\n    def test_eval(test_input, expected):\n        assert eval(test_input) == expected\n\nThis way, the `test_eval` function will run three times, once for each tuple in the list.\n\n[how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0]",
+      "expected": "Use the @pytest.mark.parametrize decorator, passing the argument names and a list of input tuples, for example @pytest.mark.parametrize(\"test_input,expected\", [(\"3+5\", 8), (\"2+4\", 6)]). pytest then runs the test once per tuple, injecting each set of values as the named arguments.",
+      "ours": {
+        "semantic": 0.874,
+        "rouge": 0.4148,
+        "judge": 0.95
+      },
+      "ragas": {
+        "semantic_similarity": 0.874,
+        "answer_correctness": 0.4912,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-004",
+      "query": "How do I get a temporary directory unique to a test?",
+      "context": "# The tmp_path fixture\n\nYou can use the tmp_path fixture which will provide a temporary directory\nunique to each test function.\n\ntmp_path is a pathlib.Path object. Here is an example test usage:\n\n    # content of test_tmp_path.py\n    CONTENT = \"content\"\n\n    def test_create_file(tmp_path):\n        d = tmp_path / \"sub\"\n        d.mkdir()\n        p = d / \"hello.txt\"\n        p.write_text(CONTENT, encoding=\"utf-8\")\n        assert p.read_text(encoding=\"utf-8\") == CONTENT\n        assert len(list(tmp_path.iterdir())) == 1\n        assert 0\n\nRunning this would result in a passed test except for the last\nassert 0 line which we use to look at values:\n\n    $ pytest test_tmp_path.py\n    =========================== test session starts ============================\n    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\n    rootdir: /home/sweet/project\n    collected 1 item\n\n    test_tmp_path.py F                                                   [100%]\n\n    ================================= FAILURES =================================\n    _____________________________ test_create_file _____________________________\n\n    tmp_path = PosixPath('PYTEST_TMPDIR/test_create_file0')",
+      "answer": "You can use the `tmp_path` fixture, which will provide a temporary directory unique to each test function. [how-to__tmp_path::the-tmp-path-fixture::0]",
+      "expected": "Request the built-in tmp_path fixture as a test argument. It gives each test function its own unique temporary directory as a pathlib.Path object, under which you can create files and subdirectories.",
+      "ours": {
+        "semantic": 0.8118,
+        "rouge": 0.2951,
+        "judge": 0.85
+      },
+      "ragas": {
+        "semantic_similarity": 0.8118,
+        "answer_correctness": 0.4757,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-005",
+      "query": "How do I assert that some code raises an exception?",
+      "context": "# Assertions about expected exceptions\n\nIn order to write assertions about raised exceptions, you can use\npytest.raises as a context manager like this:\n\n    import pytest\n\n    def test_zero_division():\n        with pytest.raises(ZeroDivisionError):\n            1 / 0\n\nand if you need to have access to the actual exception info you may use:\n\n    def test_recursion_depth():\n        with pytest.raises(RuntimeError) as excinfo:\n\n            def f():\n                f()\n\n            f()\n        assert \"maximum recursion\" in str(excinfo.value)\n\nexcinfo is an ~pytest.ExceptionInfo instance, which is a wrapper around\nthe actual exception raised.  The main attributes of interest are\n.type, .value and .traceback.\n\nNote that pytest.raises will match the exception type or any subclasses (like the standard except statement).\nIf you want to check if a block of code is raising an exact exception type, you need to check that explicitly:\n\n    def test_foo_not_implemented():\n        def foo():\n            raise NotImplementedError\n\n        with pytest.raises(RuntimeError) as excinfo:\n            foo()\n        assert excinfo.type is RuntimeError",
+      "answer": "You can use the `pytest.raises` context manager to assert that some code raises an exception. This context manager allows you to specify the expected exception type and, optionally, access additional information about the raised exception.\n\nFor example:\n\n    def test_foo_not_implemented():\n        def foo():\n            raise NotImplementedError\n\n        with pytest.raises(NotImplementedError):  # [how-to__assert::assertions-about-expected-exceptions::0]\n            foo()\n\nThis will pass if `foo()` raises a `NotImplementedError`, and fail otherwise.",
+      "expected": "Use pytest.raises as a context manager wrapping the code, for example a with pytest.raises(ZeroDivisionError) block around 1 / 0. To inspect the exception, bind it with as excinfo and check attributes like excinfo.value or excinfo.type. Note that it also matches subclasses of the given exception type.",
+      "ours": {
+        "semantic": 0.816,
+        "rouge": 0.2314,
+        "judge": 0.85
+      },
+      "ragas": {
+        "semantic_similarity": 0.816,
+        "answer_correctness": 0.454,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-006",
+      "query": "How do I clear pytest's cache?",
+      "context": "# Clearing Cache content\n\nYou can instruct pytest to clear all cache files and values\nby adding the --cache-clear option like this:\n\n\n\n    pytest --cache-clear\n\nThis is recommended for invocations from Continuous Integration\nservers where isolation and correctness is more important\nthan speed.\n\n\n",
+      "answer": "To clear pytest's cache, you can use the `--cache-clear` option when running pytest. [how-to__cache::clearing-cache-content::0]",
+      "expected": "Run pytest with the --cache-clear option, which clears all cache files and values before the run. This is recommended on continuous integration servers where isolation and correctness matter more than speed.",
+      "ours": {
+        "semantic": 0.8312,
+        "rouge": 0.2593,
+        "judge": 0.85
+      },
+      "ragas": {
+        "semantic_similarity": 0.8312,
+        "answer_correctness": 0.4578,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-007",
+      "query": "How do I register a custom marker so pytest stops warning about it?",
+      "context": "# Registering marks\n\nYou can register custom marks in your configuration file like this:\n\n\n\n    .. code-block:: toml\n\n        [pytest]\n        markers = [\n            \"slow: marks tests as slow (deselect with '-m \\\"not slow\\\"')\",\n            \"serial\",\n        ]\n\n\n\n    .. code-block:: ini\n\n        [pytest]\n        markers =\n            slow: marks tests as slow (deselect with '-m \"not slow\"')\n            serial\n\nNote that everything past the : after the mark name is an optional description.\n\nAlternatively, you can register new markers programmatically in a\npytest_configure hook:\n\n\n\n    def pytest_configure(config):\n        config.addinivalue_line(\n            \"markers\", \"env(name): mark test to run only on named environment\"\n        )\n\n\nRegistered marks appear in pytest's help text and do not emit warnings (see the next section). It\nis recommended that third-party plugins always register their markers.",
+      "answer": "To register a custom marker, you can add it to your configuration file like this:\n\n    .. code-block:: toml\n\n        [pytest]\n        markers = [\n            \"my_custom_marker: marks tests as my_custom_marker\"\n        ]\n\n\nAlternatively, if you want to register new markers programmatically in a pytest_configure hook, you can do so like this:\n\n    def pytest_configure(config):\n        config.addinivalue_line(\n            \"markers\", \"my_custom_marker: mark test to run only with my_custom_marker\"\n        )\n\n\nEither of these methods will stop pytest from warning about the custom marker.",
+      "expected": "Register the marker in your configuration file under the markers setting, with an optional description after a colon. Alternatively, register it programmatically in a pytest_configure hook using config.addinivalue_line(\"markers\", ...). Registered marks appear in pytest's help text and no longer emit warnings.",
+      "ours": {
+        "semantic": 0.8149,
+        "rouge": 0.3307,
+        "judge": 0.95
+      },
+      "ragas": {
+        "semantic_similarity": 0.8149,
+        "answer_correctness": 0.3704,
+        "faithfulness": 0.75,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-008",
+      "query": "How do I disable output capturing in pytest?",
+      "context": "# Setting capturing methods or disabling capturing\n\nThere are three ways in which pytest can perform capturing:\n\n* fd (file descriptor) level capturing (default): All writes going to the\n  operating system file descriptors 1 and 2 will be captured.\n\n* sys level capturing: Only writes to Python files sys.stdout\n  and sys.stderr will be captured.  No capturing of writes to\n  filedescriptors is performed.\n\n* tee-sys capturing: Python writes to sys.stdout and sys.stderr\n  will be captured, however the writes will also be passed-through to\n  the actual sys.stdout and sys.stderr. This allows output to be\n  'live printed' and captured for plugin use, such as junitxml (new in pytest 5.4).\n\n\n\nYou can influence output capturing mechanisms from the command line:\n\n\n\n    pytest -s                  # disable all capturing\n    pytest --capture=sys       # replace sys.stdout/stderr with in-mem files\n    pytest --capture=fd        # also point filedescriptors 1 and 2 to temp file\n    pytest --capture=tee-sys   # combines 'sys' and '-s', capturing sys.stdout/stderr\n                               # and passing it along to the actual sys.stdout/stderr",
+      "answer": "You can disable output capturing in pytest by using the `-s` command line option, as shown in the following example:\n\n```bash\npytest -s\n```\n\n[how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0]",
+      "expected": "Pass -s on the command line to disable all output capturing. You can also choose a capturing method with --capture=fd, --capture=sys, or --capture=tee-sys; pytest -s is the shortcut for turning capturing off entirely.",
+      "ours": {
+        "semantic": 0.9038,
+        "rouge": 0.25,
+        "judge": 0.85
+      },
+      "ragas": {
+        "semantic_similarity": 0.9038,
+        "answer_correctness": 0.4987,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-009",
+      "query": "What fixture scopes does pytest support?",
+      "context": "# Fixture scopes\n\nFixtures are created when first requested by a test, and are destroyed based on their scope:\n\n* function: the default scope, the fixture is destroyed at the end of the test.\n* class: the fixture is destroyed during teardown of the last test in the class.\n* module: the fixture is destroyed during teardown of the last test in the module.\n* package: the fixture is destroyed during teardown of the last test in the package where the fixture is defined, including sub-packages and sub-directories within it.\n* session: the fixture is destroyed at the end of the test session.\n\n\n\n    Pytest only caches one instance of a fixture at a time, which\n    means that when using a parametrized fixture, pytest may invoke a fixture more than once in\n    the given scope.\n\n",
+      "answer": "The fixture scopes supported by pytest are:\n\n* function\n* class\n* module\n* package\n* session\n\n[how-to__fixtures::fixture-scopes::0]",
+      "expected": "pytest supports five fixture scopes - function (the default, torn down at the end of each test), class, module, package, and session (torn down at the end of the whole test session). The scope controls how long a fixture instance lives and how widely it is shared.",
+      "ours": {
+        "semantic": 0.8322,
+        "rouge": 0.2812,
+        "judge": 0.95
+      },
+      "ragas": {
+        "semantic_similarity": 0.8322,
+        "answer_correctness": 0.6817,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    },
+    {
+      "id": "gen-010",
+      "query": "How do I set an environment variable for a single test?",
+      "context": "# How to monkeypatch/mock modules and environments\n\n3. Modifying environment variables for a test e.g. to test program behavior if an\nenvironment variable is missing, or to set multiple values to a known variable.\nmonkeypatch.setenv and monkeypatch.delenv can be used for\nthese patches.\n\n4. Use monkeypatch.setenv(\"PATH\", value, prepend=os.pathsep) to modify $PATH, and\nmonkeypatch.chdir to change the context of the current working directory\nduring a test.\n\n5. Use monkeypatch.syspath_prepend to modify sys.path which will also\ncall pkg_resources.fixup_namespace_packages and importlib.invalidate_caches.\n\n6. Use monkeypatch.context to apply patches only in a specific scope, which can help\ncontrol teardown of complex fixtures or patches to the stdlib.\n\nSee the `monkeypatch blog post`_ for some introduction material\nand a discussion of its motivation.\n\n",
+      "answer": "You can use monkeypatch.setenv() to set an environment variable for a single test. \n\n[how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2]",
+      "expected": "Use the monkeypatch fixture's setenv method, monkeypatch.setenv(name, value), to set an environment variable for the duration of a single test.",
+      "ours": {
+        "semantic": 0.7224,
+        "rouge": 0.5,
+        "judge": 0.75
+      },
+      "ragas": {
+        "semantic_similarity": 0.7224,
+        "answer_correctness": 0.4533,
+        "faithfulness": 1.0,
+        "context_precision": 1.0
+      }
+    }
+  ]
+}

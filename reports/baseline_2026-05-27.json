@@ -1,0 +1,169 @@
+{
+  "captured": "2026-05-27",
+  "model": "llama3.2",
+  "n_queries": 10,
+  "query_set": "generation_set",
+  "tracing_backend": "local",
+  "generation_latency_s": {
+    "p50": 4.5673,
+    "p95": 9.5308,
+    "mean": 5.2752
+  },
+  "retrieval_latency_s": {
+    "p50": 2.0506,
+    "p95": 5.005,
+    "mean": 2.3626
+  },
+  "tokens_per_query": {
+    "mean_total": 460.8,
+    "mean_prompt": 386.2,
+    "mean_completion": 74.6
+  },
+  "scorer_means": {
+    "semantic": 0.8324,
+    "rouge": 0.3198,
+    "judge": 0.87
+  },
+  "per_query": [
+    {
+      "id": "gen-001",
+      "query": "How do I write and run my first pytest test?",
+      "retrieval_latency_s": 1.8274,
+      "generation_latency_s": 9.5308,
+      "prompt_tokens": 405,
+      "completion_tokens": 72,
+      "total_tokens": 477,
+      "scores": {
+        "semantic": 0.8395,
+        "rouge": 0.3333,
+        "judge": 0.85
+      }
+    },
+    {
+      "id": "gen-002",
+      "query": "How do I skip a single test function?",
+      "retrieval_latency_s": 1.8708,
+      "generation_latency_s": 4.7645,
+      "prompt_tokens": 361,
+      "completion_tokens": 84,
+      "total_tokens": 445,
+      "scores": {
+        "semantic": 0.8783,
+        "rouge": 0.3019,
+        "judge": 0.85
+      }
+    },
+    {
+      "id": "gen-003",
+      "query": "How do I run the same test against multiple inputs?",
+      "retrieval_latency_s": 1.8062,
+      "generation_latency_s": 7.7646,
+      "prompt_tokens": 448,
+      "completion_tokens": 148,
+      "total_tokens": 596,
+      "scores": {
+        "semantic": 0.874,
+        "rouge": 0.4148,
+        "judge": 0.95
+      }
+    },
+    {
+      "id": "gen-004",
+      "query": "How do I get a temporary directory unique to a test?",
+      "retrieval_latency_s": 2.0506,
+      "generation_latency_s": 3.4506,
+      "prompt_tokens": 443,
+      "completion_tokens": 39,
+      "total_tokens": 482,
+      "scores": {
+        "semantic": 0.8118,
+        "rouge": 0.2951,
+        "judge": 0.85
+      }
+    },
+    {
+      "id": "gen-005",
+      "query": "How do I assert that some code raises an exception?",
+      "retrieval_latency_s": 2.073,
+      "generation_latency_s": 6.3412,
+      "prompt_tokens": 418,
+      "completion_tokens": 111,
+      "total_tokens": 529,
+      "scores": {
+        "semantic": 0.816,
+        "rouge": 0.2314,
+        "judge": 0.85
+      }
+    },
+    {
+      "id": "gen-006",
+      "query": "How do I clear pytest's cache?",
+      "retrieval_latency_s": 2.3528,
+      "generation_latency_s": 2.3321,
+      "prompt_tokens": 234,
+      "completion_tokens": 34,
+      "total_tokens": 268,
+      "scores": {
+        "semantic": 0.8312,
+        "rouge": 0.2593,
+        "judge": 0.85
+      }
+    },
+    {
+      "id": "gen-007",
+      "query": "How do I register a custom marker so pytest stops warning about it?",
+      "retrieval_latency_s": 2.1624,
+      "generation_latency_s": 6.7468,
+      "prompt_tokens": 375,
+      "completion_tokens": 122,
+      "total_tokens": 497,
+      "scores": {
+        "semantic": 0.8149,
+        "rouge": 0.3307,
+        "judge": 0.95
+      }
+    },
+    {
+      "id": "gen-008",
+      "query": "How do I disable output capturing in pytest?",
+      "retrieval_latency_s": 2.633,
+      "generation_latency_s": 4.5673,
+      "prompt_tokens": 456,
+      "completion_tokens": 59,
+      "total_tokens": 515,
+      "scores": {
+        "semantic": 0.9038,
+        "rouge": 0.25,
+        "judge": 0.85
+      }
+    },
+    {
+      "id": "gen-009",
+      "query": "What fixture scopes does pytest support?",
+      "retrieval_latency_s": 5.005,
+      "generation_latency_s": 3.1834,
+      "prompt_tokens": 339,
+      "completion_tokens": 36,
+      "total_tokens": 375,
+      "scores": {
+        "semantic": 0.8322,
+        "rouge": 0.2812,
+        "judge": 0.95
+      }
+    },
+    {
+      "id": "gen-010",
+      "query": "How do I set an environment variable for a single test?",
+      "retrieval_latency_s": 1.8451,
+      "generation_latency_s": 4.0706,
+      "prompt_tokens": 383,
+      "completion_tokens": 41,
+      "total_tokens": 424,
+      "scores": {
+        "semantic": 0.7224,
+        "rouge": 0.5,
+        "judge": 0.75
+      }
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+# Generation-set: (query, known_good_context, expected_answer) triples.
+#
+# Purpose. Generation tests are NOT retrieval tests. They answer a
+# different question: "given the RIGHT chunk, does the model write a
+# good answer and cite the chunk it used?" So the context here is
+# hand-blessed known-good context, injected as a fixture. Retrieval is
+# bypassed entirely, a retrieval bug cannot make these tests fail.
+#
+# What is pre-filled (don't touch unless you want to):
+#   - id                  stable test id.
+#   - query               a question the chunk actually answers.
+#   - context_chunk_ids   the chunk id(s) the context came from, copied
+#                         verbatim from the live Chroma index. This is
+#                         provenance: it ties known_good_context back to
+#                         a real chunk so citation tests in S5 know which
+#                         id a faithful answer should cite.
+#   - known_good_context  the FULL chunk text, pulled from the index at
+#                         scaffold time. This is what gets fed to the
+#                         generator as the only context.
+#
+# What YOU fill in (the squishy part):
+#   - expected_answer     currently "TODO". Write the answer you would
+#                         accept as correct, in your own words, grounded
+#                         ONLY in known_good_context. Keep it short (one
+#                         to three sentences). This is the reference the
+#                         three scorers grade the model's answer against:
+#                           * SemanticScorer  cosine vs your wording
+#                           * RougeScorer     word overlap vs your wording
+#                           * LLMJudgeScorer  judge reads yours as a hint
+#                         You know pytest cold, so grade by eye: write
+#                         what a correct answer looks like to you.
+#   - notes               optional. Anything tricky about this row (e.g.
+#                         "answer must mention the decorator name", or
+#                         "this chunk is code-heavy, prose answers will
+#                         score low on ROUGE").
+#
+# Tip: expected_answer does not need to quote the chunk. The judge
+# treats it as a reference, not a string to match. Semantic + ROUGE do
+# compare wording, so phrasing it the way a good answer would read helps
+# those two line up with the judge.
+
+entries:
+- id: gen-001
+  query: How do I write and run my first pytest test?
+  context_chunk_ids:
+  - getting-started::create-your-first-test::0
+  known_good_context: "# Create your first test\n\nCreate a new file called test_sample.py, containing\
+    \ a function, and a test:\n\n    # content of test_sample.py\n    def func(x):\n        return x +\
+    \ 1\n\n    def test_answer():\n        assert func(3) == 5\n\nThe test\n\n    $ pytest\n    ===========================\
+    \ test session starts ============================\n    platform linux -- Python 3.x.y, pytest-9.x.y,\
+    \ pluggy-1.x.y\n    rootdir: /home/sweet/project\n    collected 1 item\n\n    test_sample.py F   \
+    \                                                  [100%]\n\n    =================================\
+    \ FAILURES =================================\n    _______________________________ test_answer ________________________________\n\
+    \n        def test_answer():\n    >       assert func(3) == 5\n    E       assert 4 == 5\n    E  \
+    \      +  where 4 = func(3)\n\n    test_sample.py:6: AssertionError\n    =========================\
+    \ short test summary info ==========================\n    FAILED test_sample.py::test_answer - assert\
+    \ 4 == 5\n    ============================ 1 failed in 0.12s ============================="
+  expected_answer: Create a file such as test_sample.py with a function and a test that uses a plain assert
+    statement, then run pytest from the command line to collect and run it.
+  notes: ''
+- id: gen-002
+  query: How do I skip a single test function?
+  context_chunk_ids:
+  - how-to__skipping::skipping-test-functions::0
+  known_good_context: "# Skipping test functions\n\nThe simplest way to skip a test function is to mark\
+    \ it with the skip decorator\nwhich may be passed an optional reason:\n\n\n\n    @pytest.mark.skip(reason=\"\
+    no way of currently testing this\")\n    def test_the_unknown(): ...\n\n\nAlternatively, it is also\
+    \ possible to skip imperatively during test execution or setup\nby calling the pytest.skip(reason)\
+    \ function:\n\n\n\n    def test_function():\n        if not valid_config():\n            pytest.skip(\"\
+    unsupported configuration\")\n\nThe imperative method is useful when it is not possible to evaluate\
+    \ the skip condition\nduring import time.\n\nIt is also possible to skip the whole module using\n\
+    pytest.skip(reason, allow_module_level=True) at the module level:\n\n\n\n    import sys\n\n    import\
+    \ pytest\n\n    if not sys.platform.startswith(\"win\"):\n        pytest.skip(\"skipping windows-only\
+    \ tests\", allow_module_level=True)\n\n\n**Reference**: pytest.mark.skip ref"
+  expected_answer: Mark the test function with the @pytest.mark.skip decorator, optionally passing a reason.
+    You can also skip imperatively during the test by calling pytest.skip(reason), which is useful when
+    the skip condition can only be evaluated at runtime rather than at import time.
+  notes: ''
+- id: gen-003
+  query: How do I run the same test against multiple inputs?
+  context_chunk_ids:
+  - how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0
+  known_good_context: "# @pytest.mark.parametrize: parametrizing test functions\n\n\n\nThe builtin pytest.mark.parametrize\
+    \ ref decorator enables\nparametrization of arguments for a test function.  Here is a typical example\n\
+    of a test function that implements checking that a certain input leads\nto an expected output:\n\n\
+    \    # content of test_expectation.py\n    import pytest\n\n    @pytest.mark.parametrize(\"test_input,expected\"\
+    , [(\"3+5\", 8), (\"2+4\", 6), (\"6*9\", 42)])\n    def test_eval(test_input, expected):\n       \
+    \ assert eval(test_input) == expected\n\nHere, the @parametrize decorator defines three different\
+    \ (test_input,expected)\ntuples so that the test_eval function will run three times using\nthem in\
+    \ turn:\n\n    $ pytest\n    =========================== test session starts ============================\n\
+    \    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\n    rootdir: /home/sweet/project\n\
+    \    collected 3 items\n\n    test_expectation.py ..F                                            \
+    \  [100%]\n\n    ================================= FAILURES =================================\n  \
+    \  ____________________________ test_eval[6*9-42] _____________________________\n\n    test_input\
+    \ = '6*9', expected = 42"
+  expected_answer: Use the @pytest.mark.parametrize decorator, passing the argument names and a list of
+    input tuples, for example @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6)]).
+    pytest then runs the test once per tuple, injecting each set of values as the named arguments.
+  notes: ''
+- id: gen-004
+  query: How do I get a temporary directory unique to a test?
+  context_chunk_ids:
+  - how-to__tmp_path::the-tmp-path-fixture::0
+  known_good_context: "# The tmp_path fixture\n\nYou can use the tmp_path fixture which will provide a\
+    \ temporary directory\nunique to each test function.\n\ntmp_path is a pathlib.Path object. Here is\
+    \ an example test usage:\n\n    # content of test_tmp_path.py\n    CONTENT = \"content\"\n\n    def\
+    \ test_create_file(tmp_path):\n        d = tmp_path / \"sub\"\n        d.mkdir()\n        p = d /\
+    \ \"hello.txt\"\n        p.write_text(CONTENT, encoding=\"utf-8\")\n        assert p.read_text(encoding=\"\
+    utf-8\") == CONTENT\n        assert len(list(tmp_path.iterdir())) == 1\n        assert 0\n\nRunning\
+    \ this would result in a passed test except for the last\nassert 0 line which we use to look at values:\n\
+    \n    $ pytest test_tmp_path.py\n    =========================== test session starts ============================\n\
+    \    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y\n    rootdir: /home/sweet/project\n\
+    \    collected 1 item\n\n    test_tmp_path.py F                                                  \
+    \ [100%]\n\n    ================================= FAILURES =================================\n   \
+    \ _____________________________ test_create_file _____________________________\n\n    tmp_path = PosixPath('PYTEST_TMPDIR/test_create_file0')"
+  expected_answer: Request the built-in tmp_path fixture as a test argument. It gives each test function
+    its own unique temporary directory as a pathlib.Path object, under which you can create files and
+    subdirectories.
+  notes: ''
+- id: gen-005
+  query: How do I assert that some code raises an exception?
+  context_chunk_ids:
+  - how-to__assert::assertions-about-expected-exceptions::0
+  known_good_context: "# Assertions about expected exceptions\n\nIn order to write assertions about raised\
+    \ exceptions, you can use\npytest.raises as a context manager like this:\n\n    import pytest\n\n\
+    \    def test_zero_division():\n        with pytest.raises(ZeroDivisionError):\n            1 / 0\n\
+    \nand if you need to have access to the actual exception info you may use:\n\n    def test_recursion_depth():\n\
+    \        with pytest.raises(RuntimeError) as excinfo:\n\n            def f():\n                f()\n\
+    \n            f()\n        assert \"maximum recursion\" in str(excinfo.value)\n\nexcinfo is an ~pytest.ExceptionInfo\
+    \ instance, which is a wrapper around\nthe actual exception raised.  The main attributes of interest\
+    \ are\n.type, .value and .traceback.\n\nNote that pytest.raises will match the exception type or any\
+    \ subclasses (like the standard except statement).\nIf you want to check if a block of code is raising\
+    \ an exact exception type, you need to check that explicitly:\n\n    def test_foo_not_implemented():\n\
+    \        def foo():\n            raise NotImplementedError\n\n        with pytest.raises(RuntimeError)\
+    \ as excinfo:\n            foo()\n        assert excinfo.type is RuntimeError"
+  expected_answer: Use pytest.raises as a context manager wrapping the code, for example a with pytest.raises(ZeroDivisionError)
+    block around 1 / 0. To inspect the exception, bind it with as excinfo and check attributes like excinfo.value
+    or excinfo.type. Note that it also matches subclasses of the given exception type.
+  notes: ''
+- id: gen-006
+  query: How do I clear pytest's cache?
+  context_chunk_ids:
+  - how-to__cache::clearing-cache-content::0
+  known_good_context: "# Clearing Cache content\n\nYou can instruct pytest to clear all cache files and\
+    \ values\nby adding the --cache-clear option like this:\n\n\n\n    pytest --cache-clear\n\nThis is\
+    \ recommended for invocations from Continuous Integration\nservers where isolation and correctness\
+    \ is more important\nthan speed.\n\n\n"
+  expected_answer: Run pytest with the --cache-clear option, which clears all cache files and values before
+    the run. This is recommended on continuous integration servers where isolation and correctness matter
+    more than speed.
+  notes: ''
+- id: gen-007
+  query: How do I register a custom marker so pytest stops warning about it?
+  context_chunk_ids:
+  - how-to__mark::registering-marks::0
+  known_good_context: "# Registering marks\n\nYou can register custom marks in your configuration file\
+    \ like this:\n\n\n\n    .. code-block:: toml\n\n        [pytest]\n        markers = [\n          \
+    \  \"slow: marks tests as slow (deselect with '-m \\\"not slow\\\"')\",\n            \"serial\",\n\
+    \        ]\n\n\n\n    .. code-block:: ini\n\n        [pytest]\n        markers =\n            slow:\
+    \ marks tests as slow (deselect with '-m \"not slow\"')\n            serial\n\nNote that everything\
+    \ past the : after the mark name is an optional description.\n\nAlternatively, you can register new\
+    \ markers programmatically in a\npytest_configure hook:\n\n\n\n    def pytest_configure(config):\n\
+    \        config.addinivalue_line(\n            \"markers\", \"env(name): mark test to run only on\
+    \ named environment\"\n        )\n\n\nRegistered marks appear in pytest's help text and do not emit\
+    \ warnings (see the next section). It\nis recommended that third-party plugins always register their\
+    \ markers."
+  expected_answer: Register the marker in your configuration file under the markers setting, with an optional
+    description after a colon. Alternatively, register it programmatically in a pytest_configure hook
+    using config.addinivalue_line("markers", ...). Registered marks appear in pytest's help text and no
+    longer emit warnings.
+  notes: ''
+- id: gen-008
+  query: How do I disable output capturing in pytest?
+  context_chunk_ids:
+  - how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0
+  known_good_context: "# Setting capturing methods or disabling capturing\n\nThere are three ways in which\
+    \ pytest can perform capturing:\n\n* fd (file descriptor) level capturing (default): All writes going\
+    \ to the\n  operating system file descriptors 1 and 2 will be captured.\n\n* sys level capturing:\
+    \ Only writes to Python files sys.stdout\n  and sys.stderr will be captured.  No capturing of writes\
+    \ to\n  filedescriptors is performed.\n\n* tee-sys capturing: Python writes to sys.stdout and sys.stderr\n\
+    \  will be captured, however the writes will also be passed-through to\n  the actual sys.stdout and\
+    \ sys.stderr. This allows output to be\n  'live printed' and captured for plugin use, such as junitxml\
+    \ (new in pytest 5.4).\n\n\n\nYou can influence output capturing mechanisms from the command line:\n\
+    \n\n\n    pytest -s                  # disable all capturing\n    pytest --capture=sys       # replace\
+    \ sys.stdout/stderr with in-mem files\n    pytest --capture=fd        # also point filedescriptors\
+    \ 1 and 2 to temp file\n    pytest --capture=tee-sys   # combines 'sys' and '-s', capturing sys.stdout/stderr\n\
+    \                               # and passing it along to the actual sys.stdout/stderr"
+  expected_answer: Pass -s on the command line to disable all output capturing. You can also choose a
+    capturing method with --capture=fd, --capture=sys, or --capture=tee-sys; pytest -s is the shortcut
+    for turning capturing off entirely.
+  notes: ''
+- id: gen-009
+  query: What fixture scopes does pytest support?
+  context_chunk_ids:
+  - how-to__fixtures::fixture-scopes::0
+  known_good_context: "# Fixture scopes\n\nFixtures are created when first requested by a test, and are\
+    \ destroyed based on their scope:\n\n* function: the default scope, the fixture is destroyed at the\
+    \ end of the test.\n* class: the fixture is destroyed during teardown of the last test in the class.\n\
+    * module: the fixture is destroyed during teardown of the last test in the module.\n* package: the\
+    \ fixture is destroyed during teardown of the last test in the package where the fixture is defined,\
+    \ including sub-packages and sub-directories within it.\n* session: the fixture is destroyed at the\
+    \ end of the test session.\n\n\n\n    Pytest only caches one instance of a fixture at a time, which\n\
+    \    means that when using a parametrized fixture, pytest may invoke a fixture more than once in\n\
+    \    the given scope.\n\n"
+  expected_answer: pytest supports five fixture scopes - function (the default, torn down at the end of
+    each test), class, module, package, and session (torn down at the end of the whole test session).
+    The scope controls how long a fixture instance lives and how widely it is shared.
+  notes: ''
+- id: gen-010
+  query: How do I set an environment variable for a single test?
+  context_chunk_ids:
+  - how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2
+  known_good_context: '# How to monkeypatch/mock modules and environments
+
+
+    3. Modifying environment variables for a test e.g. to test program behavior if an
+
+    environment variable is missing, or to set multiple values to a known variable.
+
+    monkeypatch.setenv and monkeypatch.delenv can be used for
+
+    these patches.
+
+
+    4. Use monkeypatch.setenv("PATH", value, prepend=os.pathsep) to modify $PATH, and
+
+    monkeypatch.chdir to change the context of the current working directory
+
+    during a test.
+
+
+    5. Use monkeypatch.syspath_prepend to modify sys.path which will also
+
+    call pkg_resources.fixup_namespace_packages and importlib.invalidate_caches.
+
+
+    6. Use monkeypatch.context to apply patches only in a specific scope, which can help
+
+    control teardown of complex fixtures or patches to the stdlib.
+
+
+    See the `monkeypatch blog post`_ for some introduction material
+
+    and a discussion of its motivation.
+
+
+    '
+  expected_answer: Use the monkeypatch fixture's setenv method, monkeypatch.setenv(name, value), to set
+    an environment variable for the duration of a single test.
+  notes: ''

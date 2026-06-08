@@ -1,0 +1,1510 @@
+INFO __main__: scoring 10 generation-set rows with our scorers + Ragas
+INFO sentence_transformers.base.model: No device provided, using mps
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+INFO sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5723.47it/s]
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+INFO absl: Using default tokenizer.
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [getting-started::create-your-first-test::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[getting-started::create-your-first-test::0]
+# Create your first test
+
+Create a new file called test_sample.py, containing a function, and a test:
+
+    # content of test_sample.py
+    def func(x):
+        return x + 1
+
+    def test_answer():
+        assert func(3) == 5
+
+The test
+
+    $ pytest
+    =========================== test session starts ============================
+    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y
+    rootdir: /home/sweet/project
+    collected 1 item
+
+    test_sample.py F                                                     [100%]
+
+    ================================= FAILURES =================================
+    _______________________________ test_answer ________________________________
+
+        def test_answer():
+    >       assert func(3) == 5
+    E       assert 4 == 5
+    E        +  where 4 = func(3)
+
+    test_sample.py:6: AssertionError
+    ========================= short test summary info ==========================
+    FAILED test_sample.py::test_answer - assert 4 == 5
+    ============================ 1 failed in 0.12s =============================
+
+Question: How do I write and run my first pytest test?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): To write and run your first pytest test, you need to create a new file called `test_sample.py` with the function and test as shown in the example. Then, navigate to the directory containing this file and run the command `$ pytest`. This will execute the test and display the result.
+
+[getting-started::create-your-first-test::0]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.05s/it]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I write and run my first pytest test?
+EXPECTED: Create a file such as test_sample.py with a function and a test that uses a plain assert statement, then run pytest from the command line to collect and run it.
+MODEL'S ANSWER: To write and run your first pytest test, you need to create a new file called `test_sample.py` with the function and test as shown in the example. Then, navigate to the directory containing this file and run the command `$ pytest`. This will execute the test and display the result.
+
+[getting-started::create-your-first-test::0]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I write and run my first pytest test?
+EXPECTED: Create a file such as test_sample.py with a function and a test that uses a plain assert statement, then run pytest from the command line to collect and run it.
+MODEL'S ANSWER: To write and run your first pytest test, you need to create a new file called `test_sample.py` with the function and test as shown in the example. Then, navigate to the directory containing this file and run the command `$ pytest`. This will execute the test and display the result.
+
+[getting-started::create-your-first-test::0]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model's answer is mostly correct but lacks detail about using a plain assert statement. It also provides unnecessary navigation instructions.", "correctness": 8, "relevance": 9}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model's answer is mostly correct but lacks detail about using a plain assert statement. It also provides unnecessary navigation instructions.", "correctness": 8, "relevance": 9}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__skipping::skipping-test-functions::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__skipping::skipping-test-functions::0]
+# Skipping test functions
+
+The simplest way to skip a test function is to mark it with the skip decorator
+which may be passed an optional reason:
+
+
+
+    @pytest.mark.skip(reason="no way of currently testing this")
+    def test_the_unknown(): ...
+
+
+Alternatively, it is also possible to skip imperatively during test execution or setup
+by calling the pytest.skip(reason) function:
+
+
+
+    def test_function():
+        if not valid_config():
+            pytest.skip("unsupported configuration")
+
+The imperative method is useful when it is not possible to evaluate the skip condition
+during import time.
+
+It is also possible to skip the whole module using
+pytest.skip(reason, allow_module_level=True) at the module level:
+
+
+
+    import sys
+
+    import pytest
+
+    if not sys.platform.startswith("win"):
+        pytest.skip("skipping windows-only tests", allow_module_level=True)
+
+
+**Reference**: pytest.mark.skip ref
+
+Question: How do I skip a single test function?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): You can skip a single test function by using the `@pytest.mark.skip` decorator, which may be passed an optional reason.
+
+    @pytest.mark.skip(reason="no way of currently testing this")
+    def test_the_unknown(): ...
+
+Alternatively, you can use the `pytest.skip` function without any arguments to skip the entire test function.
+
+    def test_function():
+        if not valid_config():
+            pytest.skip()
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.32it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.32it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I skip a single test function?
+EXPECTED: Mark the test function with the @pytest.mark.skip decorator, optionally passing a reason. You can also skip imperatively during the test by calling pytest.skip(reason), which is useful when the skip condition can only be evaluated at runtime rather than at import time.
+MODEL'S ANSWER: You can skip a single test function by using the `@pytest.mark.skip` decorator, which may be passed an optional reason.
+
+    @pytest.mark.skip(reason="no way of currently testing this")
+    def test_the_unknown(): ...
+
+Alternatively, you can use the `pytest.skip` function without any arguments to skip the entire test function.
+
+    def test_function():
+        if not valid_config():
+            pytest.skip()
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I skip a single test function?
+EXPECTED: Mark the test function with the @pytest.mark.skip decorator, optionally passing a reason. You can also skip imperatively during the test by calling pytest.skip(reason), which is useful when the skip condition can only be evaluated at runtime rather than at import time.
+MODEL'S ANSWER: You can skip a single test function by using the `@pytest.mark.skip` decorator, which may be passed an optional reason.
+
+    @pytest.mark.skip(reason="no way of currently testing this")
+    def test_the_unknown(): ...
+
+Alternatively, you can use the `pytest.skip` function without any arguments to skip the entire test function.
+
+    def test_function():
+        if not valid_config():
+            pytest.skip()
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model provided a correct but incomplete answer regarding how to skip a single test function. It correctly mentioned the @pytest.mark.skip decorator and pytest.skip function, but failed to provide an example of passing a reason or using it imperatively.", "correctness": 8, "relevance": 9}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model provided a correct but incomplete answer regarding how to skip a single test function. It correctly mentioned the @pytest.mark.skip decorator and pytest.skip function, but failed to provide an example of passing a reason or using it imperatively.", "correctness": 8, "relevance": 9}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0]
+# @pytest.mark.parametrize: parametrizing test functions
+
+
+
+The builtin pytest.mark.parametrize ref decorator enables
+parametrization of arguments for a test function.  Here is a typical example
+of a test function that implements checking that a certain input leads
+to an expected output:
+
+    # content of test_expectation.py
+    import pytest
+
+    @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6), ("6*9", 42)])
+    def test_eval(test_input, expected):
+        assert eval(test_input) == expected
+
+Here, the @parametrize decorator defines three different (test_input,expected)
+tuples so that the test_eval function will run three times using
+them in turn:
+
+    $ pytest
+    =========================== test session starts ============================
+    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y
+    rootdir: /home/sweet/project
+    collected 3 items
+
+    test_expectation.py ..F                                              [100%]
+
+    ================================= FAILURES =================================
+    ____________________________ test_eval[6*9-42] _____________________________
+
+    test_input = '6*9', expected = 42
+
+Question: How do I run the same test against multiple inputs?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): To run the same test against multiple inputs, you can use the `@pytest.mark.parametrize` decorator with a list of tuples as its argument. Here's an example:
+
+    # content of test_expectation.py
+    import pytest
+
+    @pytest.mark.parametrize("test_input,expected", [
+        ("3+5", 8),
+        ("2+4", 6),
+        ("6*9", 42)
+    ])
+    def test_eval(test_input, expected):
+        assert eval(test_input) == expected
+
+This way, the `test_eval` function will run three times, once for each tuple in the list.
+
+[how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.24it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.22it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I run the same test against multiple inputs?
+EXPECTED: Use the @pytest.mark.parametrize decorator, passing the argument names and a list of input tuples, for example @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6)]). pytest then runs the test once per tuple, injecting each set of values as the named arguments.
+MODEL'S ANSWER: To run the same test against multiple inputs, you can use the `@pytest.mark.parametrize` decorator with a list of tuples as its argument. Here's an example:
+
+    # content of test_expectation.py
+    import pytest
+
+    @pytest.mark.parametrize("test_input,expected", [
+        ("3+5", 8),
+        ("2+4", 6),
+        ("6*9", 42)
+    ])
+    def test_eval(test_input, expected):
+        assert eval(test_input) == expected
+
+This way, the `test_eval` function will run three times, once for each tuple in the list.
+
+[how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I run the same test against multiple inputs?
+EXPECTED: Use the @pytest.mark.parametrize decorator, passing the argument names and a list of input tuples, for example @pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6)]). pytest then runs the test once per tuple, injecting each set of values as the named arguments.
+MODEL'S ANSWER: To run the same test against multiple inputs, you can use the `@pytest.mark.parametrize` decorator with a list of tuples as its argument. Here's an example:
+
+    # content of test_expectation.py
+    import pytest
+
+    @pytest.mark.parametrize("test_input,expected", [
+        ("3+5", 8),
+        ("2+4", 6),
+        ("6*9", 42)
+    ])
+    def test_eval(test_input, expected):
+        assert eval(test_input) == expected
+
+This way, the `test_eval` function will run three times, once for each tuple in the list.
+
+[how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model provided a correct and relevant answer to the question, but could have benefited from more detail on how pytest handles the parametrization process.", "correctness": 9, "relevance": 10}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model provided a correct and relevant answer to the question, but could have benefited from more detail on how pytest handles the parametrization process.", "correctness": 9, "relevance": 10}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__tmp_path::the-tmp-path-fixture::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__tmp_path::the-tmp-path-fixture::0]
+# The tmp_path fixture
+
+You can use the tmp_path fixture which will provide a temporary directory
+unique to each test function.
+
+tmp_path is a pathlib.Path object. Here is an example test usage:
+
+    # content of test_tmp_path.py
+    CONTENT = "content"
+
+    def test_create_file(tmp_path):
+        d = tmp_path / "sub"
+        d.mkdir()
+        p = d / "hello.txt"
+        p.write_text(CONTENT, encoding="utf-8")
+        assert p.read_text(encoding="utf-8") == CONTENT
+        assert len(list(tmp_path.iterdir())) == 1
+        assert 0
+
+Running this would result in a passed test except for the last
+assert 0 line which we use to look at values:
+
+    $ pytest test_tmp_path.py
+    =========================== test session starts ============================
+    platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y
+    rootdir: /home/sweet/project
+    collected 1 item
+
+    test_tmp_path.py F                                                   [100%]
+
+    ================================= FAILURES =================================
+    _____________________________ test_create_file _____________________________
+
+    tmp_path = PosixPath('PYTEST_TMPDIR/test_create_file0')
+
+Question: How do I get a temporary directory unique to a test?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): You can use the `tmp_path` fixture, which will provide a temporary directory unique to each test function. [how-to__tmp_path::the-tmp-path-fixture::0]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.63it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.62it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I get a temporary directory unique to a test?
+EXPECTED: Request the built-in tmp_path fixture as a test argument. It gives each test function its own unique temporary directory as a pathlib.Path object, under which you can create files and subdirectories.
+MODEL'S ANSWER: You can use the `tmp_path` fixture, which will provide a temporary directory unique to each test function. [how-to__tmp_path::the-tmp-path-fixture::0]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I get a temporary directory unique to a test?
+EXPECTED: Request the built-in tmp_path fixture as a test argument. It gives each test function its own unique temporary directory as a pathlib.Path object, under which you can create files and subdirectories.
+MODEL'S ANSWER: You can use the `tmp_path` fixture, which will provide a temporary directory unique to each test function. [how-to__tmp_path::the-tmp-path-fixture::0]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model's answer is correct in terms of using the tmp_path fixture, but it lacks specificity about its usage as a test argument.", "correctness": 9, "relevance": 8}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model's answer is correct in terms of using the tmp_path fixture, but it lacks specificity about its usage as a test argument.", "correctness": 9, "relevance": 8}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__assert::assertions-about-expected-exceptions::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__assert::assertions-about-expected-exceptions::0]
+# Assertions about expected exceptions
+
+In order to write assertions about raised exceptions, you can use
+pytest.raises as a context manager like this:
+
+    import pytest
+
+    def test_zero_division():
+        with pytest.raises(ZeroDivisionError):
+            1 / 0
+
+and if you need to have access to the actual exception info you may use:
+
+    def test_recursion_depth():
+        with pytest.raises(RuntimeError) as excinfo:
+
+            def f():
+                f()
+
+            f()
+        assert "maximum recursion" in str(excinfo.value)
+
+excinfo is an ~pytest.ExceptionInfo instance, which is a wrapper around
+the actual exception raised.  The main attributes of interest are
+.type, .value and .traceback.
+
+Note that pytest.raises will match the exception type or any subclasses (like the standard except statement).
+If you want to check if a block of code is raising an exact exception type, you need to check that explicitly:
+
+    def test_foo_not_implemented():
+        def foo():
+            raise NotImplementedError
+
+        with pytest.raises(RuntimeError) as excinfo:
+            foo()
+        assert excinfo.type is RuntimeError
+
+Question: How do I assert that some code raises an exception?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): You can use the `pytest.raises` context manager to assert that some code raises an exception. This context manager allows you to specify the expected exception type and, optionally, access additional information about the raised exception.
+
+For example:
+
+    def test_foo_not_implemented():
+        def foo():
+            raise NotImplementedError
+
+        with pytest.raises(NotImplementedError):  # [how-to__assert::assertions-about-expected-exceptions::0]
+            foo()
+
+This will pass if `foo()` raises a `NotImplementedError`, and fail otherwise.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.83it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.82it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I assert that some code raises an exception?
+EXPECTED: Use pytest.raises as a context manager wrapping the code, for example a with pytest.raises(ZeroDivisionError) block around 1 / 0. To inspect the exception, bind it with as excinfo and check attributes like excinfo.value or excinfo.type. Note that it also matches subclasses of the given exception type.
+MODEL'S ANSWER: You can use the `pytest.raises` context manager to assert that some code raises an exception. This context manager allows you to specify the expected exception type and, optionally, access additional information about the raised exception.
+
+For example:
+
+    def test_foo_not_implemented():
+        def foo():
+            raise NotImplementedError
+
+        with pytest.raises(NotImplementedError):  # [how-to__assert::assertions-about-expected-exceptions::0]
+            foo()
+
+This will pass if `foo()` raises a `NotImplementedError`, and fail otherwise.
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I assert that some code raises an exception?
+EXPECTED: Use pytest.raises as a context manager wrapping the code, for example a with pytest.raises(ZeroDivisionError) block around 1 / 0. To inspect the exception, bind it with as excinfo and check attributes like excinfo.value or excinfo.type. Note that it also matches subclasses of the given exception type.
+MODEL'S ANSWER: You can use the `pytest.raises` context manager to assert that some code raises an exception. This context manager allows you to specify the expected exception type and, optionally, access additional information about the raised exception.
+
+For example:
+
+    def test_foo_not_implemented():
+        def foo():
+            raise NotImplementedError
+
+        with pytest.raises(NotImplementedError):  # [how-to__assert::assertions-about-expected-exceptions::0]
+            foo()
+
+This will pass if `foo()` raises a `NotImplementedError`, and fail otherwise.
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model's answer correctly explains how to use pytest.raises as a context manager, but lacks detail on inspecting the exception.", "correctness": 8, "relevance": 9}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model's answer correctly explains how to use pytest.raises as a context manager, but lacks detail on inspecting the exception.", "correctness": 8, "relevance": 9}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__cache::clearing-cache-content::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__cache::clearing-cache-content::0]
+# Clearing Cache content
+
+You can instruct pytest to clear all cache files and values
+by adding the --cache-clear option like this:
+
+
+
+    pytest --cache-clear
+
+This is recommended for invocations from Continuous Integration
+servers where isolation and correctness is more important
+than speed.
+
+
+
+
+Question: How do I clear pytest's cache?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): To clear pytest's cache, you can use the `--cache-clear` option when running pytest. [how-to__cache::clearing-cache-content::0]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.78it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.78it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I clear pytest's cache?
+EXPECTED: Run pytest with the --cache-clear option, which clears all cache files and values before the run. This is recommended on continuous integration servers where isolation and correctness matter more than speed.
+MODEL'S ANSWER: To clear pytest's cache, you can use the `--cache-clear` option when running pytest. [how-to__cache::clearing-cache-content::0]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I clear pytest's cache?
+EXPECTED: Run pytest with the --cache-clear option, which clears all cache files and values before the run. This is recommended on continuous integration servers where isolation and correctness matter more than speed.
+MODEL'S ANSWER: To clear pytest's cache, you can use the `--cache-clear` option when running pytest. [how-to__cache::clearing-cache-content::0]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model provided a correct method for clearing pytest's cache but failed to provide additional context and details that would make it more informative.", "correctness": 8, "relevance": 9}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model provided a correct method for clearing pytest's cache but failed to provide additional context and details that would make it more informative.", "correctness": 8, "relevance": 9}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__mark::registering-marks::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__mark::registering-marks::0]
+# Registering marks
+
+You can register custom marks in your configuration file like this:
+
+
+
+    .. code-block:: toml
+
+        [pytest]
+        markers = [
+            "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+            "serial",
+        ]
+
+
+
+    .. code-block:: ini
+
+        [pytest]
+        markers =
+            slow: marks tests as slow (deselect with '-m "not slow"')
+            serial
+
+Note that everything past the : after the mark name is an optional description.
+
+Alternatively, you can register new markers programmatically in a
+pytest_configure hook:
+
+
+
+    def pytest_configure(config):
+        config.addinivalue_line(
+            "markers", "env(name): mark test to run only on named environment"
+        )
+
+
+Registered marks appear in pytest's help text and do not emit warnings (see the next section). It
+is recommended that third-party plugins always register their markers.
+
+Question: How do I register a custom marker so pytest stops warning about it?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): To register a custom marker, you can add it to your configuration file like this:
+
+    .. code-block:: toml
+
+        [pytest]
+        markers = [
+            "my_custom_marker: marks tests as my_custom_marker"
+        ]
+
+
+Alternatively, if you want to register new markers programmatically in a pytest_configure hook, you can do so like this:
+
+    def pytest_configure(config):
+        config.addinivalue_line(
+            "markers", "my_custom_marker: mark test to run only with my_custom_marker"
+        )
+
+
+Either of these methods will stop pytest from warning about the custom marker.
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.85it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  4.84it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I register a custom marker so pytest stops warning about it?
+EXPECTED: Register the marker in your configuration file under the markers setting, with an optional description after a colon. Alternatively, register it programmatically in a pytest_configure hook using config.addinivalue_line("markers", ...). Registered marks appear in pytest's help text and no longer emit warnings.
+MODEL'S ANSWER: To register a custom marker, you can add it to your configuration file like this:
+
+    .. code-block:: toml
+
+        [pytest]
+        markers = [
+            "my_custom_marker: marks tests as my_custom_marker"
+        ]
+
+
+Alternatively, if you want to register new markers programmatically in a pytest_configure hook, you can do so like this:
+
+    def pytest_configure(config):
+        config.addinivalue_line(
+            "markers", "my_custom_marker: mark test to run only with my_custom_marker"
+        )
+
+
+Either of these methods will stop pytest from warning about the custom marker.
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I register a custom marker so pytest stops warning about it?
+EXPECTED: Register the marker in your configuration file under the markers setting, with an optional description after a colon. Alternatively, register it programmatically in a pytest_configure hook using config.addinivalue_line("markers", ...). Registered marks appear in pytest's help text and no longer emit warnings.
+MODEL'S ANSWER: To register a custom marker, you can add it to your configuration file like this:
+
+    .. code-block:: toml
+
+        [pytest]
+        markers = [
+            "my_custom_marker: marks tests as my_custom_marker"
+        ]
+
+
+Alternatively, if you want to register new markers programmatically in a pytest_configure hook, you can do so like this:
+
+    def pytest_configure(config):
+        config.addinivalue_line(
+            "markers", "my_custom_marker: mark test to run only with my_custom_marker"
+        )
+
+
+Either of these methods will stop pytest from warning about the custom marker.
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model provided a clear and accurate explanation for registering custom markers in pytest, including both configuration file and programmatically methods.", "correctness": 10, "relevance": 9}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model provided a clear and accurate explanation for registering custom markers in pytest, including both configuration file and programmatically methods.", "correctness": 10, "relevance": 9}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0]
+# Setting capturing methods or disabling capturing
+
+There are three ways in which pytest can perform capturing:
+
+* fd (file descriptor) level capturing (default): All writes going to the
+  operating system file descriptors 1 and 2 will be captured.
+
+* sys level capturing: Only writes to Python files sys.stdout
+  and sys.stderr will be captured.  No capturing of writes to
+  filedescriptors is performed.
+
+* tee-sys capturing: Python writes to sys.stdout and sys.stderr
+  will be captured, however the writes will also be passed-through to
+  the actual sys.stdout and sys.stderr. This allows output to be
+  'live printed' and captured for plugin use, such as junitxml (new in pytest 5.4).
+
+
+
+You can influence output capturing mechanisms from the command line:
+
+
+
+    pytest -s                  # disable all capturing
+    pytest --capture=sys       # replace sys.stdout/stderr with in-mem files
+    pytest --capture=fd        # also point filedescriptors 1 and 2 to temp file
+    pytest --capture=tee-sys   # combines 'sys' and '-s', capturing sys.stdout/stderr
+                               # and passing it along to the actual sys.stdout/stderr
+
+Question: How do I disable output capturing in pytest?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): You can disable output capturing in pytest by using the `-s` command line option, as shown in the following example:
+
+```bash
+pytest -s
+```
+
+[how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.81it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  2.81it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I disable output capturing in pytest?
+EXPECTED: Pass -s on the command line to disable all output capturing. You can also choose a capturing method with --capture=fd, --capture=sys, or --capture=tee-sys; pytest -s is the shortcut for turning capturing off entirely.
+MODEL'S ANSWER: You can disable output capturing in pytest by using the `-s` command line option, as shown in the following example:
+
+```bash
+pytest -s
+```
+
+[how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I disable output capturing in pytest?
+EXPECTED: Pass -s on the command line to disable all output capturing. You can also choose a capturing method with --capture=fd, --capture=sys, or --capture=tee-sys; pytest -s is the shortcut for turning capturing off entirely.
+MODEL'S ANSWER: You can disable output capturing in pytest by using the `-s` command line option, as shown in the following example:
+
+```bash
+pytest -s
+```
+
+[how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model provided a correct answer with some minor formatting issues and an unnecessary link, but it did not fully address the question's request for disabling output capturing.", "correctness": 8, "relevance": 9}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model provided a correct answer with some minor formatting issues and an unnecessary link, but it did not fully address the question's request for disabling output capturing.", "correctness": 8, "relevance": 9}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__fixtures::fixture-scopes::0].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__fixtures::fixture-scopes::0]
+# Fixture scopes
+
+Fixtures are created when first requested by a test, and are destroyed based on their scope:
+
+* function: the default scope, the fixture is destroyed at the end of the test.
+* class: the fixture is destroyed during teardown of the last test in the class.
+* module: the fixture is destroyed during teardown of the last test in the module.
+* package: the fixture is destroyed during teardown of the last test in the package where the fixture is defined, including sub-packages and sub-directories within it.
+* session: the fixture is destroyed at the end of the test session.
+
+
+
+    Pytest only caches one instance of a fixture at a time, which
+    means that when using a parametrized fixture, pytest may invoke a fixture more than once in
+    the given scope.
+
+
+
+Question: What fixture scopes does pytest support?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): The fixture scopes supported by pytest are:
+
+* function
+* class
+* module
+* package
+* session
+
+[how-to__fixtures::fixture-scopes::0]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.88it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  3.86it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: What fixture scopes does pytest support?
+EXPECTED: pytest supports five fixture scopes - function (the default, torn down at the end of each test), class, module, package, and session (torn down at the end of the whole test session). The scope controls how long a fixture instance lives and how widely it is shared.
+MODEL'S ANSWER: The fixture scopes supported by pytest are:
+
+* function
+* class
+* module
+* package
+* session
+
+[how-to__fixtures::fixture-scopes::0]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: What fixture scopes does pytest support?
+EXPECTED: pytest supports five fixture scopes - function (the default, torn down at the end of each test), class, module, package, and session (torn down at the end of the whole test session). The scope controls how long a fixture instance lives and how widely it is shared.
+MODEL'S ANSWER: The fixture scopes supported by pytest are:
+
+* function
+* class
+* module
+* package
+* session
+
+[how-to__fixtures::fixture-scopes::0]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model's answer correctly listed all the fixture scopes supported by pytest, but lacked a brief description of each scope.", "correctness": 9, "relevance": 10}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model's answer correctly listed all the fixture scopes supported by pytest, but lacked a brief description of each scope.", "correctness": 9, "relevance": 10}
+INFO llm_rag.providers.ollama: prompt (llama3.2): You answer questions about pytest using ONLY the context below.
+
+Each context chunk is labelled with an id in the form [chunk-id]. Rules:
+- Answer using only facts found in the context. Do not use outside knowledge.
+- After each claim, cite the id(s) of the chunk(s) it came from, inline,
+  in square brackets exactly as shown, for example: [how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2].
+- If the context does not contain the answer, reply exactly:
+  I don't know based on the provided context.
+  and cite nothing.
+
+Context:
+[how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2]
+# How to monkeypatch/mock modules and environments
+
+3. Modifying environment variables for a test e.g. to test program behavior if an
+environment variable is missing, or to set multiple values to a known variable.
+monkeypatch.setenv and monkeypatch.delenv can be used for
+these patches.
+
+4. Use monkeypatch.setenv("PATH", value, prepend=os.pathsep) to modify $PATH, and
+monkeypatch.chdir to change the context of the current working directory
+during a test.
+
+5. Use monkeypatch.syspath_prepend to modify sys.path which will also
+call pkg_resources.fixup_namespace_packages and importlib.invalidate_caches.
+
+6. Use monkeypatch.context to apply patches only in a specific scope, which can help
+control teardown of complex fixtures or patches to the stdlib.
+
+See the `monkeypatch blog post`_ for some introduction material
+and a discussion of its motivation.
+
+
+
+Question: How do I set an environment variable for a single test?
+
+Answer (with inline [chunk-id] citations):
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): You can use monkeypatch.setenv() to set an environment variable for a single test. 
+
+[how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.17it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  5.16it/s]
+INFO llm_rag.scorers.judge: judge rubric prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I set an environment variable for a single test?
+EXPECTED: Use the monkeypatch fixture's setenv method, monkeypatch.setenv(name, value), to set an environment variable for the duration of a single test.
+MODEL'S ANSWER: You can use monkeypatch.setenv() to set an environment variable for a single test. 
+
+[how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2]
+INFO llm_rag.providers.ollama: prompt (llama3.2): You are a strict but fair grader for a question-answering system.
+
+You will be given:
+- A QUESTION
+- An EXPECTED answer (a reference, the model's answer does NOT need to
+  match it word-for-word to be correct)
+- The MODEL'S answer to grade
+
+Grade the model's answer on two dimensions, each 0-10:
+- correctness: does the answer correctly answer the question?
+  10 = fully correct (even if phrased differently from the expected answer)
+   5 = partially correct, or correct but with significant inaccuracies
+   0 = wrong, contradicts the expected answer, or hallucinated
+- relevance: is the answer on-topic and responsive to the question?
+  10 = directly addresses the question
+   5 = partially on-topic, drifts
+   0 = off-topic or refuses to answer
+
+Respond with ONLY a JSON object, no other text:
+{"reasoning": "<one or two sentences explaining your scores>",
+ "correctness": <int>,
+ "relevance": <int>}
+
+QUESTION: How do I set an environment variable for a single test?
+EXPECTED: Use the monkeypatch fixture's setenv method, monkeypatch.setenv(name, value), to set an environment variable for the duration of a single test.
+MODEL'S ANSWER: You can use monkeypatch.setenv() to set an environment variable for a single test. 
+
+[how-to__monkeypatch::how-to-monkeypatch-mock-modules-and-environments::2]
+INFO httpx: HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+INFO llm_rag.providers.ollama: response (llama3.2): {"reasoning": "The model's answer is partially correct, as it mentions the correct function to use, but lacks context about the monkeypatch fixture.", "correctness": 7, "relevance": 8}
+INFO llm_rag.scorers.judge: judge raw response (llama3.2): {"reasoning": "The model's answer is partially correct, as it mentions the correct function to use, but lacks context about the monkeypatch fixture.", "correctness": 7, "relevance": 8}
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+INFO sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5965.14it/s]
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+INFO httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+Evaluating:   0%|          | 0/40 [00:00<?, ?it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  8.25it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  8.24it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 73.42it/s]
+Evaluating:   2%|▎         | 1/40 [00:00<00:05,  6.82it/s]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.29it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.28it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 36.69it/s]
+Evaluating:   5%|▌         | 2/40 [03:26<1:16:44, 121.16s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:   8%|▊         | 3/40 [05:53<1:22:11, 133.28s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  10%|█         | 4/40 [06:47<1:01:08, 101.91s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  1.80it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  1.79it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 18.30it/s]
+Evaluating:  12%|█▎        | 5/40 [06:48<38:11, 65.48s/it]   INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  1.93it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  1.92it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 30.34it/s]
+Evaluating:  15%|█▌        | 6/40 [12:01<1:24:45, 149.58s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  18%|█▊        | 7/40 [16:05<1:39:16, 180.51s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  20%|██        | 8/40 [16:55<1:14:08, 139.02s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  1.60it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  1.59it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 12.23it/s]
+Evaluating:  22%|██▎       | 9/40 [16:56<49:32, 95.88s/it]   INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.09it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 15.98it/s]
+Evaluating:  25%|██▌       | 10/40 [22:47<1:27:17, 174.57s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  28%|██▊       | 11/40 [26:59<1:35:50, 198.30s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  30%|███       | 12/40 [27:51<1:11:45, 153.75s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.35it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.35it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 71.34it/s]
+Evaluating:  32%|███▎      | 13/40 [27:52<48:18, 107.36s/it]  INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.45it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.45it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 38.91it/s]
+Evaluating:  35%|███▌      | 14/40 [31:36<1:01:47, 142.61s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  38%|███▊      | 15/40 [33:35<56:31, 135.66s/it]  INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  40%|████      | 16/40 [34:24<43:48, 109.54s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.21it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.20it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 19.88it/s]
+Evaluating:  42%|████▎     | 17/40 [34:25<29:26, 76.81s/it] INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.69it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.68it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 38.45it/s]
+Evaluating:  45%|████▌     | 18/40 [38:39<47:46, 130.29s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  48%|████▊     | 19/40 [41:21<48:52, 139.63s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  50%|█████     | 20/40 [42:07<37:12, 111.64s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.90it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.90it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 74.99it/s]
+Evaluating:  52%|█████▎    | 21/40 [42:08<24:47, 78.27s/it] INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.09it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.07it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 76.98it/s]
+Evaluating:  55%|█████▌    | 22/40 [45:51<36:31, 121.73s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  57%|█████▊    | 23/40 [47:07<30:39, 108.18s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  60%|██████    | 24/40 [47:43<23:04, 86.52s/it] 
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.70it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.69it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 24.91it/s]
+Evaluating:  62%|██████▎   | 25/40 [47:44<15:10, 60.72s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.59it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.58it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 26.47it/s]
+Evaluating:  65%|██████▌   | 26/40 [53:24<33:41, 144.42s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  68%|██████▊   | 27/40 [58:28<41:41, 192.42s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  70%|███████   | 28/40 [59:10<29:28, 147.41s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.39it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.37it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 37.99it/s]
+Evaluating:  72%|███████▎  | 29/40 [59:11<18:56, 103.32s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.69it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.66it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 57.62it/s]
+Evaluating:  75%|███████▌  | 30/40 [1:02:08<20:55, 125.51s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  78%|███████▊  | 31/40 [1:04:21<19:09, 127.73s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  80%|████████  | 32/40 [1:05:36<14:56, 112.01s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  2.98it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  2.96it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 25.27it/s]
+Evaluating:  82%|████████▎ | 33/40 [1:05:37<09:09, 78.57s/it] INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.13it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.12it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 28.89it/s]
+Evaluating:  85%|████████▌ | 34/40 [1:09:41<12:49, 128.20s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  88%|████████▊ | 35/40 [1:11:23<10:02, 120.46s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  90%|█████████ | 36/40 [1:11:43<06:00, 90.08s/it] 
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.13it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.13it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 66.73it/s]
+Evaluating:  92%|█████████▎| 37/40 [1:11:43<03:09, 63.19s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  3.31it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  3.30it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00, 28.10it/s]
+Evaluating:  95%|█████████▌| 38/40 [1:13:19<02:26, 73.10s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating:  98%|█████████▊| 39/40 [1:14:04<01:04, 64.60s/it]INFO httpx: HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Evaluating: 100%|██████████| 40/40 [1:14:24<00:00, 51.37s/it]Evaluating: 100%|██████████| 40/40 [1:14:25<00:00, 111.63s/it]
+INFO __main__: wrote /Users/sara/StudioProjects/llm-rag/reports/ragas_comparison.json
+{
+  "captured": "2026-05-27",
+  "model": "llama3.2",
+  "ragas_judge_model": "llama3.1:8b",
+  "embed_model": "all-MiniLM-L6-v2",
+  "n_queries": 10,
+  "query_set": "generation_set",
+  "context_mode": "known_good (blessed), not live retrieval",
+  "metric_map": {
+    "answer_similarity": "semantic",
+    "answer_correctness": "judge",
+    "faithfulness": null,
+    "context_precision": null
+  },
+  "our_scorer_means": {
+    "semantic": 0.8324,
+    "rouge": 0.3198,
+    "judge": 0.87
+  },
+  "ragas_metric_means": {
+    "semantic_similarity": 0.8324,
+    "answer_correctness": 0.5062,
+    "faithfulness": 0.8929,
+    "context_precision": 1.0
+  },
+  "ragas_parse_failures": {
+    "semantic_similarity": 0,
+    "answer_correctness": 0,
+    "faithfulness": 0,
+    "context_precision": 0
+  }
+}
