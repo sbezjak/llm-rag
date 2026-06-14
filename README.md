@@ -199,3 +199,19 @@ docs/walkthrough.md          # layered writeup
 - [`docs/walkthrough.md`](docs/walkthrough.md), layered writeup: why this
   project exists, TL;DR, every finding with evidence, known limitations.
 - [`CLAUDE.md`](CLAUDE.md), guidance for AI assistants working in this repo.
+
+The canonical sources behind this project, worth reading first for the
+overview a hands-on build does not give:
+
+- Lewis et al. 2020, [Retrieval-Augmented Generation for Knowledge-Intensive
+  NLP Tasks](https://arxiv.org/abs/2005.11401), the paper that introduced RAG,
+  the parametric + non-parametric memory split this project tests.
+- Es et al. 2023, [Ragas: Automated Evaluation of Retrieval Augmented
+  Generation](https://arxiv.org/abs/2309.15217), the paper behind the
+  [Ragas](https://docs.ragas.io) library compared in Finding 11. It defines
+  faithfulness, answer relevance, and context precision, the
+  retrieval-vs-generation metric split this suite mirrors.
+- The retrieval primitives' origins: BM25 (Robertson & Zaragoza, 2009, *The
+  Probabilistic Relevance Framework: BM25 and Beyond*) and Reciprocal Rank
+  Fusion (Cormack et al., 2009), the sparse retriever and the hybrid fusion
+  used here.
