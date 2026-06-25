@@ -2,11 +2,12 @@
 
 > Part of a [5-project AI/QA testing portfolio](https://github.com/sbezjak/sbezjak) - all projects and write-ups.
 
-New here? The [walkthrough](docs/walkthrough.md) is the guided tour - why
+Check out [walkthrough](docs/walkthrough.md) for the guided tour - why
 the project exists, every finding with evidence. This README is the
 reference.
 
 Live report: [test report](https://sbezjak.github.io/llm-rag/reports/report.html)
+
 Most RAG failures look like generation bugs but are actually retrieval bugs -
 the model produced a wrong answer because the wrong chunk was fetched, not
 because the model failed at reading. This project is a pytest-based RAG
