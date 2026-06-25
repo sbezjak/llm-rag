@@ -1,5 +1,7 @@
 # llm-rag
 
+> Part of a [5-project AI/QA testing portfolio](https://github.com/sbezjak) - all projects + write-ups.
+
 New here? The [walkthrough](docs/walkthrough.md) is the guided tour - why
 the project exists, every finding with evidence. This README is the
 reference.
