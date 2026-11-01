@@ -1,0 +1,194 @@
+# Faithfulness specimens: matched (faithful / unfaithful) answer pairs over REAL
+# retrieved context, for the failure-shape transfer test (P2 RAG).
+#
+# WHY THIS FILE EXISTS. The existing hallucination gate (tests/hallucination/
+# test_hallucination.py:154-162) checks the SHAPE of a citation - is the cited chunk
+# id a real index id? It never checks whether the CLAIM sitting next to that id is
+# actually stated in the chunk. So an answer can cite a real id, read grounded, and
+# still contain one fabricated fact - and pass every gate. This is the buried
+# faithfulness hole. These specimens let a judge be tested on catching exactly that.
+#
+# CONSTRUCTION (the canary method, adapted to RAG). Each specimen starts from one row
+# of data/generation_set.yaml - a real query, its hand-blessed known-good chunk, and a
+# grounded reference answer. From it we build a MATCHED PAIR:
+#   - faithful_answer:   a 3-4 claim answer, every claim supported by the chunk.
+#   - unfaithful_answer: the SAME answer with exactly ONE plausible but unsupported
+#     claim planted in the middle (a fabricated fact absent from every chunk), the rest
+#     left supported. The failure is BURIED among true claims, so a skim stamps it
+#     FAITHFUL - the whole point vs a salient failure.
+# The two answers differ ONLY by the planted sentence, so the pair is a clean control:
+# the faithful twin measures false-flagging, the unfaithful twin measures catching.
+#
+# CONTEXT IS MULTI-CHUNK ON PURPOSE. Real retrieval returns several chunks; a bigger
+# text surface is a real skim surface. Each specimen's context = its own known-good
+# chunk (primary_chunk_id) PLUS one real distractor chunk from another generation-set
+# row (distractor_chunk_ids), chosen so the distractor cannot accidentally support the
+# plant. Chunk TEXT is not duplicated here - the harness resolves it by id from
+# generation_set.yaml, so the context stays authoritative and drift-proof.
+#
+# planted_token: a distinctive lowercase substring of the fabricated claim. The
+# deterministic oracle counts an "unfaithful" catch as GROUNDED only when the judging
+# arm names an unsupported claim containing this token - i.e. it caught the ACTUAL
+# planted fact, not merely stamped "unfaithful" for some other (wrong) reason. The
+# harness asserts at load time that planted_token appears in NO chunk of the item.
+#
+# Scope note: this is a JUDGE test over EXISTING contexts. We do NOT run retrieval, do
+# NOT re-index. primary/distractor chunk texts are the known-good contexts already in
+# the repo.
+
+specimens:
+  - id: faith-002
+    query: How do I skip a single test function?
+    primary_chunk_id: how-to__skipping::skipping-test-functions::0
+    distractor_chunk_ids:
+      - how-to__cache::clearing-cache-content::0
+    faithful_answer: >-
+      The simplest way to skip a test function is to mark it with the @pytest.mark.skip
+      decorator, which accepts an optional reason argument. You can also skip
+      imperatively during the test by calling pytest.skip(reason), which is useful when
+      the skip condition can only be evaluated at runtime rather than at import time. To
+      skip an entire module, call pytest.skip(reason, allow_module_level=True) at the
+      module level.
+    unfaithful_answer: >-
+      The simplest way to skip a test function is to mark it with the @pytest.mark.skip
+      decorator, which accepts an optional reason argument. By default, a skipped test is
+      automatically retried once on the following run before pytest reports it as
+      skipped. You can also skip imperatively during the test by calling
+      pytest.skip(reason), which is useful when the skip condition can only be evaluated
+      at runtime. To skip an entire module, call pytest.skip(reason,
+      allow_module_level=True) at the module level.
+    planted_claim: By default, a skipped test is automatically retried once on the following run before pytest reports it as skipped.
+    planted_token: retried
+    construction: >-
+      gen-002 grounded answer with a fabricated auto-retry behavior inserted as the
+      second sentence. The chunk describes only @pytest.mark.skip, pytest.skip(), and
+      module-level skipping - it says nothing about retrying skipped tests.
+
+  - id: faith-003
+    query: How do I run the same test against multiple inputs?
+    primary_chunk_id: how-to__parametrize::pytest-mark-parametrize-parametrizing-test-functions::0
+    distractor_chunk_ids:
+      - how-to__tmp_path::the-tmp-path-fixture::0
+    faithful_answer: >-
+      Use the @pytest.mark.parametrize decorator, passing the argument names as a string
+      and a list of input tuples, for example @pytest.mark.parametrize("test_input,expected",
+      [("3+5", 8), ("2+4", 6)]). pytest runs the test function once per tuple, injecting
+      each set of values as the named arguments. In the documented example the decorator
+      defines three tuples, so test_eval runs three times.
+    unfaithful_answer: >-
+      Use the @pytest.mark.parametrize decorator, passing the argument names as a string
+      and a list of input tuples, for example @pytest.mark.parametrize("test_input,expected",
+      [("3+5", 8), ("2+4", 6)]). If two tuples resolve to the same expected value, pytest
+      automatically deduplicates them and runs that case only once. pytest runs the test
+      function once per tuple, injecting each set of values as the named arguments. In the
+      documented example the decorator defines three tuples, so test_eval runs three times.
+    planted_claim: If two tuples resolve to the same expected value, pytest automatically deduplicates them and runs that case only once.
+    planted_token: deduplicat
+    construction: >-
+      gen-003 grounded answer with a fabricated de-duplication behavior inserted. The
+      chunk shows parametrize running once per tuple (three tuples -> three runs) and says
+      nothing about collapsing tuples that share an expected value.
+
+  - id: faith-005
+    query: How do I assert that some code raises an exception?
+    primary_chunk_id: how-to__assert::assertions-about-expected-exceptions::0
+    distractor_chunk_ids:
+      - how-to__skipping::skipping-test-functions::0
+    faithful_answer: >-
+      Use pytest.raises as a context manager wrapping the code that should raise, for
+      example a with pytest.raises(ZeroDivisionError): block around 1 / 0. If you need the
+      exception itself, bind it with as excinfo and inspect attributes such as
+      excinfo.type, excinfo.value, and excinfo.traceback. Note that pytest.raises matches
+      the given exception type or any of its subclasses, so to require an exact type you
+      must assert on excinfo.type yourself.
+    unfaithful_answer: >-
+      Use pytest.raises as a context manager wrapping the code that should raise, for
+      example a with pytest.raises(ZeroDivisionError): block around 1 / 0. If you need the
+      exception itself, bind it with as excinfo and inspect attributes such as
+      excinfo.type, excinfo.value, and excinfo.traceback. The excinfo object also exposes
+      a .lineno attribute that returns the exact source line number where the exception was
+      raised. Note that pytest.raises matches the given exception type or any of its
+      subclasses, so to require an exact type you must assert on excinfo.type yourself.
+    planted_claim: The excinfo object also exposes a .lineno attribute that returns the exact source line number where the exception was raised.
+    planted_token: lineno
+    construction: >-
+      gen-005 grounded answer with a fabricated excinfo.lineno attribute inserted. The
+      chunk lists exactly .type, .value, and .traceback as the attributes of interest -
+      there is no .lineno.
+
+  - id: faith-007
+    query: How do I register a custom marker so pytest stops warning about it?
+    primary_chunk_id: how-to__mark::registering-marks::0
+    distractor_chunk_ids:
+      - how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0
+    faithful_answer: >-
+      Register the custom marker in your configuration file under the markers setting,
+      where everything after the colon is an optional description. Alternatively, register
+      it programmatically in a pytest_configure hook by calling
+      config.addinivalue_line("markers", ...). Registered marks appear in pytest's help
+      text and no longer emit warnings, and third-party plugins are encouraged to always
+      register their markers.
+    unfaithful_answer: >-
+      Register the custom marker in your configuration file under the markers setting,
+      where everything after the colon is an optional description. If a marker is left
+      unregistered, pytest aborts the session with exit code 3 unless you pass the
+      --allow-unknown-marks flag. Alternatively, register it programmatically in a
+      pytest_configure hook by calling config.addinivalue_line("markers", ...). Registered
+      marks appear in pytest's help text and no longer emit warnings.
+    planted_claim: If a marker is left unregistered, pytest aborts the session with exit code 3 unless you pass the --allow-unknown-marks flag.
+    planted_token: allow-unknown-marks
+    construction: >-
+      gen-007 grounded answer with a fabricated exit-code-3 abort and a nonexistent
+      --allow-unknown-marks flag inserted. The chunk says unregistered marks emit a
+      warning, never that they abort the run, and mentions no such flag.
+
+  - id: faith-008
+    query: How do I disable output capturing in pytest?
+    primary_chunk_id: how-to__capture-stdout-stderr::setting-capturing-methods-or-disabling-capturing::0
+    distractor_chunk_ids:
+      - how-to__mark::registering-marks::0
+    faithful_answer: >-
+      pytest can capture output in three ways: fd-level capturing (the default, which
+      captures writes to OS file descriptors 1 and 2), sys-level capturing (only
+      sys.stdout and sys.stderr), and tee-sys capturing (captures sys.stdout/stderr but
+      also passes the writes through). Pass -s on the command line to disable all
+      capturing, and use --capture=fd, --capture=sys, or --capture=tee-sys to select a
+      method explicitly.
+    unfaithful_answer: >-
+      pytest can capture output in three ways: fd-level capturing (the default, which
+      captures writes to OS file descriptors 1 and 2), sys-level capturing (only
+      sys.stdout and sys.stderr), and tee-sys capturing (captures sys.stdout/stderr but
+      also passes the writes through). A fourth mode, --capture=buffered, holds all output
+      in memory and prints it only if the test fails. Pass -s on the command line to
+      disable all capturing, and use --capture=fd, --capture=sys, or --capture=tee-sys to
+      select a method explicitly.
+    planted_claim: A fourth mode, --capture=buffered, holds all output in memory and prints it only if the test fails.
+    planted_token: buffered
+    construction: >-
+      gen-008 grounded answer with a fabricated fourth capturing mode inserted. The chunk
+      enumerates exactly three methods (fd, sys, tee-sys) - there is no buffered mode.
+
+  - id: faith-009
+    query: What fixture scopes does pytest support?
+    primary_chunk_id: how-to__fixtures::fixture-scopes::0
+    distractor_chunk_ids:
+      - how-to__tmp_path::the-tmp-path-fixture::0
+    faithful_answer: >-
+      pytest supports the function (the default, torn down at the end of each test), class
+      (torn down after the last test in the class), module (after the last test in the
+      module), package (after the last test in the package), and session (torn down at the
+      end of the whole test session) scopes. The scope controls how long a fixture instance
+      lives and how widely it is shared across tests.
+    unfaithful_answer: >-
+      pytest supports the function (the default, torn down at the end of each test), class
+      (torn down after the last test in the class), module (after the last test in the
+      module), package (after the last test in the package), and session (torn down at the
+      end of the whole test session) scopes. It also provides a thread scope, whose fixture
+      is torn down when the spawning worker thread exits. The scope controls how long a
+      fixture instance lives and how widely it is shared across tests.
+    planted_claim: It also provides a thread scope, whose fixture is torn down when the spawning worker thread exits.
+    planted_token: thread scope
+    construction: >-
+      gen-009 grounded answer with a fabricated sixth "thread" scope inserted after the
+      five real ones. The chunk lists exactly function, class, module, package, and
+      session - there is no thread scope.

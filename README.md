@@ -192,6 +192,40 @@ reports/                     # baselines, drift reports, html test report
 docs/walkthrough.md          # layered writeup
 ```
 
+## Side experiment: can a small local model check an answer against its source?
+
+The refusal finding says you need a check that an answer is backed by the
+retrieved chunks. This experiment (August 2026, separate from the test suite)
+asks whether a small local model can do that check.
+
+It took 4 answers built from real chunks and made a second copy of each with
+one made-up fact planted among the true ones. Two judges graded all 8 answers
+under 5 prompt styles, 4 times each (320 calls, temperature 0.7). The two main
+prompt styles:
+
+| Prompt | Judge | Flagged the planted answer | Named the planted fact | Wrongly flagged a good answer |
+|---|---|---|---|---|
+| Plain: is every claim supported? | `qwen2.5:7b` | 8/16 | not asked | 0/16 |
+| Plain: is every claim supported? | `llama3.2` | 0/16 | not asked | 0/16 |
+| List every claim and quote its support | `qwen2.5:7b` | 14/16 | 6/16 | 9/16 |
+| List every claim and quote its support | `llama3.2` | 9/16 | 0/16 | 11/16 |
+
+Asking the judge to list every claim looks like a win if you only count the
+verdict (14/16). But it named the real fact on only 6 of 16 tries and rejected
+9 of 16 good answers: it flagged more, it did not get more accurate. Once false
+alarms count, no prompt style beat the plain one. The check that mattered was
+testing whether the judge's named claim really was the planted one.
+
+This is small (4 planted facts, n=16 per cell) and covers two small local judges
+only. It did not test Ragas or a hosted model, so it says nothing about whether
+those would catch a made-up fact.
+
+Writeup with hand-read examples:
+[`experiments/failure-shape-rag-writeup.md`](experiments/failure-shape-rag-writeup.md).
+Full table: [`experiments/failure-shape-rag-results.md`](experiments/failure-shape-rag-results.md).
+Test answers: [`data/faithfulness_specimens.yaml`](data/faithfulness_specimens.yaml).
+Raw run: [`evidence/`](evidence/).
+
 ## Further reading
 
 - [`docs/walkthrough.md`](docs/walkthrough.md), layered writeup: why this
