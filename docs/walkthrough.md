@@ -156,7 +156,7 @@ ret-008  query: can I create a custom mark
 
 **Question.** For a query like `pytest -m select tests by marker`, does meaning-search put the right page in the top 5 a user sees?
 
-**Test.** `ret-014` and `ret-012`: the vector test xfails at top-5, the hybrid and reranker tests for the same rows pass.
+**Test.** `ret-014` and `ret-012`: the vector test xfails at top-5, and the hybrid and reranker top-5 tests for the same rows pass. The reranker's top-1 test is a pinned failure (F4).
 
 ```
 ret-014  query: pytest -m select tests by marker
@@ -166,11 +166,11 @@ ret-014  query: pytest -m select tests by marker
                           just buried)
   hybrid top-5:    HIT   (BM25 picks up `pytest -m` literally and
                           lifts it through RRF)
-  reranker top-1:  HIT   (cross-encoder reading query + chunk
-                          together puts the right one first)
+  reranker top-1:  MISS  (keeps it in the top 5 but leaves it 3rd,
+                          under two how-to__mark chunks - see F4)
 ```
 
-**Takeaway.** Meaning-search left the right page just outside the top 5, even though it was sitting in the top 10. Keyword search caught the literal `pytest -m`, RRF lifted it into the top 5, and the reranker put it first. This is the whole argument for combining the searches: the queries users actually type, full of flags and function names, are the ones meaning-search ranks slightly too low, in the exact window the UI shows.
+**Takeaway.** Meaning-search left the right page just outside the top 5, even though it was sitting in the top 10. Keyword search caught the literal `pytest -m` and RRF lifted it into the top 5. The reranker kept it there but did not move it to first. This is the whole argument for combining the searches: the queries users actually type, full of flags and function names, are the ones meaning-search ranks slightly too low, in the exact window the UI shows.
 
 ### F6. Leftover markup in the documents showed up in the answer
 
