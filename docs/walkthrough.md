@@ -52,7 +52,7 @@ To see it happen, open the HTML report: every test row has a **"Captured log"** 
 
 ## TL;DR (5 minutes)
 
-**What this is.** A pytest harness over a RAG pipeline (Chroma + `all-MiniLM-L6-v2` embeddings, BM25, `bge-reranker-base`, `llama3.2` generator) where retrieval and generation are tested as separate concerns. 12 findings, and 26 known failure modes pinned in the tests so they can't silently pass.
+**What this is.** A pytest harness over a RAG pipeline (Chroma + `all-MiniLM-L6-v2` embeddings, BM25, `bge-reranker-base`, `llama3.2` generator) where retrieval and generation are tested as separate concerns. 12 findings, and 18 known failure modes pinned in the tests so they can't silently pass.
 
 **What this isn't.** A production RAG framework. 12 pytest doc pages, 10 hand-written generation queries, 1 model. Findings are reproducible on this stack, not universal claims about RAG.
 
@@ -62,7 +62,7 @@ To see it happen, open the HTML report: every test row has a **"Captured log"** 
 
 2. **The test that should catch a made-up source nearly passed it** (F2). For that same answer, the model cited a page that doesn't exist. The citation reader dropped the fake id and reported "cited nothing", the same signal a correct refusal gives, so the hallucination looked identical to good behaviour until a second reader was added to catch it.
 
-3. **A search for a bare function name finds nothing** (F3). Query just `pytest.warns`, with the page that documents it in the index, and none of the four search methods find it. The user gets a related but wrong page and no signal anything went wrong. The fix isn't a better search engine, it's rewriting the query or indexing the docs differently.
+3. **Fixing one bug silently deleted a chunk** (F3). The markup fix left one section too short, so the chunker dropped it. Every search then missed `pytest.warns`, and I pinned that as a search failure with a convincing wrong reason, until a check showed the chunk wasn't in the index.
 
 ### The five test categories
 
@@ -118,31 +118,27 @@ reads everything           -> ["how-to__plugin::registering-a-plugin::0",
 
 **Takeaway.** Almost not, and that is the finding. The model cited a page that doesn't exist. The citation reader was built to ignore any id that isn't a real chunk, so it dropped the fake one and reported "cited nothing". But "cited nothing" is also what the system reports when it correctly refuses. So a made-up citation and an honest refusal looked the same, and the test passed either way. The fix was a second reader that keeps every id the model wrote, real or fake, so a fabricated source shows up instead of disappearing. (Two smaller fixes fell out: filtering by the shape of a real id, since the regex also caught `["-m"]` from code examples; and moving the test onto the out-of-corpus questions, where fabricated sources actually appear.)
 
-### F3. A search for a bare function name finds nothing
+### F3. Fixing one bug silently deleted a chunk
 
-**Question.** A user types just `pytest.warns` into a docs search, and the page documenting `pytest.warns` is in the index. Does any search method find it?
+**Question.** A user types just `pytest.warns` into a docs search, and all four search methods miss the chunk that documents it. Why?
 
-**Test.** `ret-007`, run through all four retriever tests, all pinned as known failures.
+**Test.** `ret-007` through all four retriever tests, plus `tests/retrieval/test_expected_ids.py`, which checks that every expected chunk is in the index.
 
 ```
 ret-007  query: pytest.warns
-  vector top-5:    MISS  (no sentence around it, so the embedding drifts to
-                          topical neighbours - "warnings", "exceptions" - not the target)
-  BM25 top-5:      MISS  (`pytest` is in every chunk, so it adds no signal;
-                          `warns` alone isn't frequent enough to beat chunks
-                          that match more words)
-  hybrid top-5:    MISS  (merging two misses is still a miss)
-  reranker top-5:  MISS  (can only reorder what hybrid passed it, and the
-                          target chunk isn't in that set)
+
+chunk missing from the index:   vector, BM25, hybrid, reranker all MISS
+chunk restored:                 vector, BM25, hybrid, reranker all rank it #1
+                                (reranker score 0.88, next chunk 0.18)
 ```
 
-**Takeaway.** A bare identifier gives the search nothing to work with, and no later step can make up for it: keyword search can't outweigh how common `pytest` is, and the reranker can only reorder what it's handed. The fix isn't a better search, it's rewriting the query to add context, or indexing identifiers with more words around them.
+**Takeaway.** The search was never the problem. The markup fix from F6 shortened this one-sentence section from 86 to 71 characters, under the chunker's 80-character minimum, so the chunker dropped it without a word. Every search then had to miss it, because it wasn't there to find. I read that as a bare function name giving search too little to work with, wrote a convincing reason for each search, and pinned 8 known failures on that explanation. A strict xfail proves something fails, not why, so the pins held the wrong reason in place. An earlier version of this page reported that wrong explanation as the finding. The fix was to count the heading in the minimum size and add a test that every expected chunk exists. Before explaining a retrieval miss, check the thing you expected is in the index.
 
 ### F4. The reranker usually finds the right page but ranks the wrong one first
 
 **Question.** The reranker is the smart final step: it re-reads the question against each shortlisted chunk and reorders them. Does it put the *right* chunk at number 1?
 
-**Test.** `tests/retrieval/test_reranker.py`, top-1 precision over 16 queries; the wrong chunk is ranked first on 10 of them, all pinned as known failures.
+**Test.** `tests/retrieval/test_reranker.py`, top-1 precision over 16 queries; the wrong chunk is ranked first on 9 of them, all pinned as known failures.
 
 ```
 ret-013  query: --cache-clear
@@ -154,7 +150,7 @@ ret-008  query: can I create a custom mark
   right answer:        registering-marks::0                            (the how-to subsection)
 ```
 
-**Takeaway.** This is the largest cluster in the project, 10 of the 26 pinned. The right chunk almost always reaches the top 5 (recall is fine); the problem is ordering. It ranks broad page-overview or code-heavy chunks above the narrow subsection that actually answers the question. That's not a bug in this project's code, it's a bias of this particular off-the-shelf reranker (`bge-reranker-base`) on this corpus, and it matters anywhere the interface shows a single best answer. So if the UI shows only the top result, you can't lean on the reranker's #1 - show a few candidates, or fine-tune or swap the reranker for this kind of content.
+**Takeaway.** This is the largest cluster in the project, 9 of the 18 pinned. The right chunk reaches the top 5 on all 16 queries (recall is fine); the problem is ordering. It ranks broad page-overview or code-heavy chunks above the narrow subsection that actually answers the question. That's not a bug in this project's code, it's a bias of this particular off-the-shelf reranker (`bge-reranker-base`) on this corpus, and it matters anywhere the interface shows a single best answer. So if the UI shows only the top result, you can't lean on the reranker's #1 - show a few candidates, or fine-tune or swap the reranker for this kind of content.
 
 ### F5. Searching by meaning alone buries the right page just outside the top 5
 
@@ -301,7 +297,7 @@ The short read: generation is where the time goes, about 3x retrieval and the on
 
 ## Known limitations
 
-**1 corpus, 1 model.** 12 pages of pytest documentation, 16 retrieval queries, 10 generation queries, 6 out-of-corpus queries. Every finding is reproducible on this stack. Whether bare-identifier queries fail on a bigger embedding model over a 10k-chunk corpus is a question this repo doesn't answer. The *patterns* (split test categories, pinned known failures with a reason, latency timed in isolation) carry over; the specific numbers don't.
+**1 corpus, 1 model.** 12 pages of pytest documentation, 16 retrieval queries, 10 generation queries, 6 out-of-corpus queries. Every finding is reproducible on this stack. Whether these results hold on a bigger embedding model over a 10k-chunk corpus is a question this repo doesn't answer. The *patterns* (split test categories, pinned known failures with a reason, latency timed in isolation) carry over; the specific numbers don't.
 
 **`llama3.2` (3B) is both the model under test and the LLM judge.** The judge is the same model that wrote the answer - the classic self-grading risk. Softened by gating only on the semantic scorer (the judge is logged, not enforced) and by running Ragas with a stronger grader as a sanity check (F12). A real release gate would use a stronger judge that doesn't share weights with the system under test.
 
@@ -315,10 +311,10 @@ The short read: generation is where the time goes, about 3x retrieval and the on
 
 ## What I'd reuse
 
-`pytest.xfail(strict=True, reason="<finding>")`. Every documented failure mode in this repo is pinned as a known failure with a reason string that names what's broken (a bare identifier has no signal for either search method; the similarity scorer is stricter than the judge on a short correct answer; the model leans on its training when the retrieved chunk is on a related topic but has no answer). 26 of them so far. They keep the suite green while documenting reality, and they live right next to the test that trips them. The payoff: the day a known failure starts passing, the build breaks on purpose, so someone updates the docs instead of losing the finding without noticing.
+`pytest.xfail(strict=True, reason="<finding>")`. Every documented failure mode in this repo is pinned as a known failure with a reason string that names what's broken (the reranker prefers a page overview to the subsection that answers the question; the similarity scorer is stricter than the judge on a short correct answer; the model leans on its training when the retrieved chunk is on a related topic but has no answer). 18 of them so far. They keep the suite green while documenting reality, and they live right next to the test that trips them. The payoff: the day a known failure starts passing, the build breaks on purpose, so someone updates the docs instead of losing the finding without noticing. One limit: a pin proves something fails, not why, which is how F3 sat behind 8 pins with the wrong reason.
 
 The technique isn't specific to AI. It works on any flaky integration where you understand *why* something fails. Use it whenever a test fails for a known structural reason you want recorded in code - and want to hear about it if the failure ever goes away.
 
-It carried over from my first project ([llm-eval-harness](https://github.com/sbezjak/llm-eval-harness)), where it pinned scorer calibration against a 10-item set. What this project shows is that the same technique scales up to pinning 26 different retrieval, generation, refusal, and citation failures across a whole RAG pipeline without changing shape.
+It carried over from my first project ([llm-eval-harness](https://github.com/sbezjak/llm-eval-harness)), where it pinned scorer calibration against a 10-item set. What this project shows is that the same technique scales up to pinning 18 retrieval, generation, refusal, and citation failures across a whole RAG pipeline without changing shape.
 
-The HTML report writes to `reports/report.html` on every test run. The 26 pinned failures are the record of what the system is known to get wrong, so read those, not a coverage percentage.
+The HTML report writes to `reports/report.html` on every test run. The 18 pinned failures are the record of what the system is known to get wrong, so read those, not a coverage percentage.

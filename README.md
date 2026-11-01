@@ -54,7 +54,7 @@ in the walkthrough, which carries the full evidence for each
 
 | # | Finding | Where |
 |---|---|---|
-| 1 | A bare-identifier query (`pytest.warns`) can fail across every retriever - vector, BM25, hybrid, reranker - because the embedding has too little sentence context and BM25 fragments the identifier into low-signal tokens | `tests/retrieval/test_vector.py`, `test_bm25.py`, `test_hybrid.py`, `test_reranker.py` (xfailed strict) |
+| 1 | A markup fix silently dropped a chunk from the index, so every search missed `pytest.warns` - first misread as a bare-identifier search failure, corrected once the chunk was found missing | `tests/retrieval/test_expected_ids.py`, `llm_rag/scripts/build_index.py` |
 | 2 | Pure vector retrieval can bury the right chunk just outside top-5 even when hybrid + reranker recover it - the reason production RAG is not pure vector | `tests/retrieval/test_vector.py` (xfailed strict on ret-012 / ret-014) |
 | 3 | rst markup leaks from chunks into generated answers | `tests/generation/test_generation_quality.py` |
 | 4 | Semantic and LLM-judge scorers disagree on the same answers | `tests/generation/test_scorers.py` |

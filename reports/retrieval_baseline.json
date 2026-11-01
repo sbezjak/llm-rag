@@ -19,14 +19,14 @@
       "vector": {
         "recall@1": 0.75,
         "recall@10": 1.0,
-        "recall@5": 1.0
+        "recall@5": 0.75
       }
     },
     "mixed": {
       "bm25": {
         "recall@1": 0.5,
         "recall@10": 1.0,
-        "recall@5": 0.5
+        "recall@5": 1.0
       },
       "hybrid": {
         "recall@1": 0.5,
@@ -46,17 +46,17 @@
     },
     "paraphrase": {
       "bm25": {
-        "recall@1": 0.375,
+        "recall@1": 0.125,
         "recall@10": 0.875,
         "recall@5": 0.875
       },
       "hybrid": {
-        "recall@1": 0.5,
+        "recall@1": 0.375,
         "recall@10": 1.0,
         "recall@5": 1.0
       },
       "rerank": {
-        "recall@1": 0.375,
+        "recall@1": 0.25,
         "recall@10": 1.0,
         "recall@5": 1.0
       },
@@ -73,7 +73,7 @@
         "recall@5": 1.0
       },
       "hybrid": {
-        "recall@1": 1.0,
+        "recall@1": 0.5,
         "recall@10": 1.0,
         "recall@5": 1.0
       },
@@ -83,7 +83,7 @@
         "recall@5": 1.0
       },
       "vector": {
-        "recall@1": 1.0,
+        "recall@1": 0.5,
         "recall@10": 1.0,
         "recall@5": 1.0
       }
@@ -102,12 +102,13 @@
         "ret-004",
         "ret-005",
         "ret-008",
+        "ret-009",
+        "ret-010",
         "ret-012",
         "ret-tough-001"
       ],
       "5": [
-        "ret-001",
-        "ret-004"
+        "ret-001"
       ],
       "10": [
         "ret-001"
@@ -119,8 +120,10 @@
         "ret-004",
         "ret-005",
         "ret-008",
+        "ret-010",
         "ret-012",
-        "ret-014"
+        "ret-014",
+        "ret-tough-001"
       ],
       "5": [],
       "10": []
@@ -131,6 +134,7 @@
         "ret-004",
         "ret-005",
         "ret-008",
+        "ret-009",
         "ret-010",
         "ret-012",
         "ret-013",
@@ -141,15 +145,17 @@
     },
     "vector": {
       "1": [
-        "ret-001",
         "ret-004",
         "ret-005",
         "ret-006",
+        "ret-010",
         "ret-012",
-        "ret-014"
+        "ret-014",
+        "ret-tough-001"
       ],
       "5": [
-        "ret-012"
+        "ret-012",
+        "ret-014"
       ],
       "10": []
     }
@@ -157,24 +163,24 @@
   "n_entries": 16,
   "overall": {
     "bm25": {
-      "recall@1": 0.5625,
+      "recall@1": 0.4375,
       "recall@10": 0.9375,
-      "recall@5": 0.875
+      "recall@5": 0.9375
     },
     "hybrid": {
-      "recall@1": 0.625,
-      "recall@10": 1.0,
-      "recall@5": 1.0
-    },
-    "rerank": {
       "recall@1": 0.5,
       "recall@10": 1.0,
       "recall@5": 1.0
     },
-    "vector": {
-      "recall@1": 0.625,
+    "rerank": {
+      "recall@1": 0.4375,
       "recall@10": 1.0,
-      "recall@5": 0.9375
+      "recall@5": 1.0
+    },
+    "vector": {
+      "recall@1": 0.5625,
+      "recall@10": 1.0,
+      "recall@5": 0.875
     }
   },
   "rerank_candidate_k": 25
