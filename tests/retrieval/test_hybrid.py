@@ -30,19 +30,7 @@ logger = logging.getLogger(__name__)
 
 K_VALUES = (5, 10)
 
-KNOWN_HYBRID_XFAILS: dict[tuple[str, int], str] = {
-    ("ret-007", 5): (
-        "Bare-identifier query `pytest.warns`: both vector and BM25 miss the "
-        "right chunk (see test_vector / test_bm25), so RRF over their outputs "
-        "cannot recover it. The reranker also misses since the chunk is not in "
-        "the hybrid candidate set. Real finding: no retrieval combination here "
-        "rescues a bare-identifier query when both signals are weak."
-    ),
-    ("ret-007", 10): (
-        "Same root cause as ret-007 @5: hybrid candidate set does not include "
-        "the target chunk because neither input retriever surfaces it."
-    ),
-}
+KNOWN_HYBRID_XFAILS: dict[tuple[str, int], str] = {}
 
 
 def _any_hit(ids: list[str], acceptable: list[str]) -> bool:

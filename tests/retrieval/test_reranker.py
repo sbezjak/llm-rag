@@ -45,18 +45,8 @@ def _ids():
 # look at why (model change, candidate set change, dataset change)
 # instead of letting the improvement go unnoticed.
 # Known top-5 recall misses: the reranker cannot surface a chunk that
-# the underlying hybrid step never produced as a candidate. ret-007's
-# bare-identifier `pytest.warns` query is missed by both vector and
-# BM25 (see test_vector / test_bm25), so the hybrid candidate set
-# doesn't contain the target chunk for the reranker to rescue.
-TOP5_XFAILS: dict[str, str] = {
-    "ret-007": (
-        "Bare-identifier query `pytest.warns`: hybrid candidate set does "
-        "not include the target chunk (both vector and BM25 miss it; see "
-        "test_vector / test_bm25). Reranker can only reorder what hybrid "
-        "produced, so this is structurally unrecoverable here."
-    ),
-}
+# the underlying hybrid step never produced as a candidate.
+TOP5_XFAILS: dict[str, str] = {}
 
 
 TOP1_XFAILS: dict[str, str] = {
@@ -64,11 +54,6 @@ TOP1_XFAILS: dict[str, str] = {
         "bge picks parametrize::basic-pytest-generate-tests-example::0 over "
         "getting-started::create-your-first-test. Reranker buries plain-English "
         "walkthrough chunks under identifier-heavy ones."
-    ),
-    "ret-007": (
-        "Bare-identifier query `pytest.warns`: target chunk not in hybrid "
-        "candidate set (see TOP5_XFAILS). Top-1 cannot be the target if "
-        "top-5 cannot."
     ),
     "ret-009": (
         "bge picks how-to-monkeypatch-mock-modules-and-environments::1 (a "

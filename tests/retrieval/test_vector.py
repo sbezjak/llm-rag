@@ -31,17 +31,6 @@ K_VALUES = (5, 10)
 # Per-(entry_id, k) reasons for documented vector misses. Keep the
 # reason concrete: name what the retriever returned instead and why.
 KNOWN_VECTOR_XFAILS: dict[tuple[str, int], str] = {
-    ("ret-007", 5): (
-        "Bare-identifier query `pytest.warns` returns warnings/exceptions/skipping "
-        "chunks instead of the dedicated `assertions-about-expected-warnings::0`. "
-        "Embedding has too little context (two tokens, no sentence) to lean on; "
-        "hybrid + reranker also miss (see test_bm25 / test_hybrid / test_reranker)."
-    ),
-    ("ret-007", 10): (
-        "Same root cause as ret-007 @5: bare-identifier `pytest.warns` is not in "
-        "vector top-10 either. The chunk exists and contains the literal text; "
-        "the embedding just cannot rank it without sentence context."
-    ),
     ("ret-012", 5): (
         "Intent-ambiguous query: vector returns how-to__mark chunks (attach a "
         "marker to a test) instead of how-to__usage::specifying-which-tests-to-run "

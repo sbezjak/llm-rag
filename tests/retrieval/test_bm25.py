@@ -36,17 +36,6 @@ KNOWN_BM25_XFAILS: dict[tuple[str, int], str] = {
         "paraphrase query. Vector finds it at top-1 (see test_vector); BM25 "
         "alone misses even at top-10."
     ),
-    ("ret-007", 5): (
-        "Bare-identifier query `pytest.warns`: BM25 tokenizes it to "
-        "[pytest, warns]. `pytest` appears in nearly every chunk (no signal); "
-        "`warns` does discriminate but the chunk's term frequency is not "
-        "enough to lift it over chunks that have `warns` plus other matching "
-        "tokens. Vector also misses (see test_vector); reranker cannot recover."
-    ),
-    ("ret-007", 10): (
-        "Same root cause as ret-007 @5: BM25 top-10 still does not include "
-        "the dedicated `assertions-about-expected-warnings::0` chunk."
-    ),
 }
 
 

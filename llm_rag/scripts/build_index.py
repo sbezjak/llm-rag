@@ -136,11 +136,11 @@ def chunk_file(path: Path) -> list[Chunk]:
     chunks: list[Chunk] = []
     for title, body in split_sections(raw):
         for idx, part in enumerate(split_oversized(title, body)):
-            if len(part) < MIN_CHARS:
+            text = f"# {title}\n\n{part}"
+            if len(text) < MIN_CHARS:
                 continue
             slug = slugify(title)
             chunk_id = f"{stem}::{slug}::{idx}"
-            text = f"# {title}\n\n{part}"
             chunks.append(Chunk(id=chunk_id, text=text, source=path.name, section=title))
     return chunks
 
